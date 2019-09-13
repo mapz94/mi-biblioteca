@@ -45,6 +45,7 @@ export class UserService {
     let userArr:User[] = [];
     userText = userText.toLowerCase();
     passText = passText.toLowerCase();
+
     for( let i = 0; i < this.user.length; i ++){
   
       let texto = this.user[i];
