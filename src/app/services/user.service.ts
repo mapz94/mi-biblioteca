@@ -47,7 +47,7 @@ export class UserService {
     userText = userText.toLowerCase();
     passText = passText.toLowerCase();
     console.log(this.user.length);
-    for( let i = 0; i <= this.user.length; i ++){
+    for( let i = 0; i < this.user.length; i ++){
   
       let texto = this.user[i];
   
