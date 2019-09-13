@@ -1,22 +1,28 @@
+<i class="h1 fas fa-book-reader mx-4 mt-4 text-muted"></i>
 <div class="container">
-    <i class="h1 fas fa-book-reader mx-3 mt-4 text-muted"></i>
-    <br><br>
-    <div class="card text-center mx-2 mb-4 text-white elegant-color-dark animated fadeInUp faster">
+    <p class="h4 my-3 text-center animated faster fadeIn">Recuperar contraseña</p>
+    <div class="card mx-2 mb-4 z-depth-0 animated faster fadeInUp">
         <!-- Card content -->
-        <div class="card-body stylish-color">
-            <p class="h4 my-3">Recuperar contraseña</p>
+        <div class="card-body bg-white z-depth-0 text-center">
+            <div class="alert alert-info mx-3 my-3">Para recuperar su contraseña, llene los campos solicitados y luego pulse enviar.
+            </div>
             <div class="m-3">
-
-                <!-- Nombre usuario-->
-                <input type="user" id="RegisterFormUser" class="form-control mb-4 grey lighten-2"
-                    placeholder="E-mail registrado" [(ngModel)]="email" (keyup.enter)="recuperaPass()">
-                <!-- Nombre-->
-                <input type="user" id="RegisterFormUser" class="form-control mb-4 grey lighten-2"
-                    placeholder="Usuario registrado" [(ngModel)]="username" (keyup.enter)="recuperaPass()">
+                <div class="md-form text-left">
+                    <i class="fas fa-mail-bulk prefix color-ico"></i>
+                    <input type="text" id="LoginFormUser" class="form-control mb-4" [(ngModel)]="email"
+                        (keyup.enter)="recuperaPass()">
+                    <label for="inputUser">E-mail registrado</label>
+                </div>
+                <div class="md-form text-left">
+                    <i class="fas fa-user prefix color-ico"></i>
+                    <input type="password" id="LoginFormPassword" class="form-control" [(ngModel)]="username"
+                        (keyup.enter)="recuperaPass()">
+                    <label for="inputPass">Usuario registrado</label>
+                </div>
             </div>
             <!-- Usuario -->
 
-            <div class="alert alert-danger mx-3 my-3 animated faster fadeInDown">Un texto de error aún no terminado
+            <div *ngIf="errorInput" class="alert alert-danger mx-3 my-3 animated faster fadeIn">Usuario o e-mail registrado no esta registrado actualmente.
             </div>
             <!-- Back button-->
             <a routerLink="/login" class="btn btn-danger m-2 waves-effect waves-light text-capitalize rounded-pill"><i

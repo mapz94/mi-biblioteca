@@ -15,6 +15,7 @@ export class AppComponent {
   }
 
   ngOnInit() {
+    window.scroll(0,0);
     if(localStorage.getItem('usuario_activo') != null && localStorage.getItem('id_activo')){
       this.userLog.userLog = localStorage.getItem('usuario_activo');
       this.userLog.userID = localStorage.getItem('id_activo');

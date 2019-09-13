@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForgetComponent implements OnInit {
 
+  errorInput:boolean = false;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  recuperaPass(){
+    this.errorInput = !this.errorInput;
+
   }
 
 }
