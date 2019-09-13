@@ -76,13 +76,14 @@
             </div>
 
             <!-- Register button -->
-            <button class="btn my-5 btn-block btn-success waves-effect waves-light text-capitalize rounded-pill"
+            <a routerLink="/login"
+                class="btn btn-danger waves-effect waves-light text-capitalize rounded-pill"><i
+                    class="fas fa-arrow-circle-left text-white"></i> Cancelar registro</a>
+                    
+            <button class="btn my-5 btn-success waves-effect waves-light text-capitalize rounded-pill"
                 type="submit" (click)="registerUser()">Crear
                 usuario</button>
 
-            <a routerLink="/login"
-                class="btn btn-block btn-danger waves-effect waves-light text-capitalize rounded-pill"><i
-                    class="fas fa-arrow-circle-left text-white"></i> Cancelar registro</a>
         </div>
     </div>
 </div>
