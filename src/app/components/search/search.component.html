@@ -1,0 +1,47 @@
+<app-navbar></app-navbar>
+
+<div class="container faster animated fadeInUp mt-5">
+    <div class="row mt-3">
+        <div class="col-sm">
+            <!-- Button -->
+            <a routerLink="/home" class="btn btn-block btn-return-red waves-effect waves-light text-capitalize rounded-pill text-white"><i
+                    class="fas fa-arrow-circle-left text-white"></i> Volver al inicio</a>
+        </div>
+
+    </div>
+    <div class="row mt-3">
+        <div class="col-sm">
+            <div class="md-form text-left">
+                <i class="fas fa-book prefix color-ico"></i>
+                <input type="text" id="SearchForm" class="form-control mb-4" [(ngModel)]="valorBusqueda"
+                    (keyup)="buscarMB(valorBusqueda)">
+                <label for="SearchForm">Buscar Libro</label>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-sm">
+            <h5 *ngIf="mbiblios.length >= 0 && valorBusqueda.length >= 1">Buscando el material bibliográfico
+                "{{termino}}"
+            </h5>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-sm">
+
+            <div class="row animated fadeIn fast" *ngIf="mbiblios.length == 0 && valorBusqueda.length >= 1">
+
+                <div class="col-md-12">
+                    <div class="alert alert-info z-depth-0" role="alert">
+                        Opps, no hemos encontrado el material bibliográfico que buscas.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-columns" *ngIf="mbiblios.length >= 1 && valorBusqueda.length >= 1">
+                <app-card-materialbiblio (mbSeleccionado)="verMaterial( $event )" [materialbiblio]="mbiblio"
+                    [index]="mbiblio.id" *ngFor="let mbiblio of mbiblios"></app-card-materialbiblio>
+            </div>
+        </div>
+    </div>
+</div>

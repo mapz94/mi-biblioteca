@@ -1,0 +1,54 @@
+<i class="h1 fas fa-book-reader mx-4 mt-4 text-muted"></i>
+<div class="container">
+    <br><br>
+    <p class="h4 mb-1 text-center text-muted">Bienvenido a <b>Mi Biblioteca</b> en linea</p>
+    <div class="card mx-2 mb-4 z-depth-0">
+        <!-- Card content -->
+        <div class="card-body bg-white z-depth-0 text-center">
+            <p class="h6 my-5 text-center">Inicio de sesión</p>
+            <div class="mx-1">
+                <div class="md-form text-left">
+                    <i class="fas fa-user prefix color-ico"></i>
+                    <input type="text" id="LoginFormUser" class="form-control mb-4" [(ngModel)]="username"
+                        (keyup.enter)="validarLogin()">
+                    <label for="inputUser">Usuario</label>
+                </div>
+                <div class="md-form text-left">
+                    <i class="fas fa-key prefix color-ico"></i>
+                    <input type="password" id="LoginFormPassword" class="form-control" [(ngModel)]="password"
+                        (keyup.enter)="validarLogin()">
+                    <label for="inputPass">Contraseña</label>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember"
+                            [(ngModel)]="check" (change)="checkCheckBoxvalue(check)">
+                        <label class="custom-control-label" for="defaultLoginFormRemember">Mantener sesión
+                            iniciada</label>
+                    </div>
+                </div>
+            </div>
+            <!-- Usuario -->
+            <div *ngIf="errorLogin" class="alert alert-danger mx-3 my-3 animated faster fadeIn z-depth-0">
+                <u>Usuario</u> o
+                <u>contraseña</u>
+                ingresada no es valida.</div>
+            <!-- Register -->
+            <p class="my-2 mt-5 animated faster fadeIn">
+                <a routerLink="/register" class="text-muted">¿No estas registrado?, <b>Registrate aquí</b></a>
+                <!-- Forgot password -->
+            </p>
+            <p class="my-2 animated faster fadeIn">
+                <a routerLink="/forget" class="text-muted">¿Olvidaste tu contraseña?</a>
+            </p>
+            <!-- Sign in button -->
+            <button [ngClass]="{
+                        'btn-success':!errorLogin,
+                        'btn-danger':errorLogin
+                    }" class="btn btn-lg waves-effect waves-light my-4 text-capitalize rounded-pill z-depth-1 h5"
+                type="submit" (click)="validarLogin()">Ingresar</button>
+        </div>
+    </div>
+</div>

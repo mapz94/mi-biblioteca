@@ -1,0 +1,32 @@
+<div class="container">
+    <i class="h1 fas fa-book-reader mx-3 mt-4 text-muted"></i>
+    <br><br>
+    <div class="card text-center mx-2 mb-4 text-white elegant-color-dark animated fadeInUp faster">
+        <!-- Card content -->
+        <div class="card-body stylish-color">
+            <p class="h4 my-3">Recuperar contraseña</p>
+            <div class="m-3">
+
+                <!-- Nombre usuario-->
+                <input type="user" id="RegisterFormUser" class="form-control mb-4 grey lighten-2"
+                    placeholder="E-mail registrado" [(ngModel)]="email" (keyup.enter)="recuperaPass()">
+                <!-- Nombre-->
+                <input type="user" id="RegisterFormUser" class="form-control mb-4 grey lighten-2"
+                    placeholder="Usuario registrado" [(ngModel)]="username" (keyup.enter)="recuperaPass()">
+            </div>
+            <!-- Usuario -->
+
+            <div class="alert alert-danger mx-3 my-3 animated faster fadeInDown">Un texto de error aún no terminado
+            </div>
+            <!-- Back button-->
+            <a routerLink="/login" class="btn btn-danger m-2 waves-effect waves-light text-capitalize rounded-pill"><i
+                    class="fas fa-arrow-circle-left text-white"></i> Volver al inicio</a>
+            <!-- Register button -->
+            <button class="btn btn-success waves-effect waves-light text-capitalize rounded-pill m-2" type="submit"
+                (click)="recuperaPass()">Recuperar contraseña</button>
+        </div>
+
+
+    </div>
+
+</div>
