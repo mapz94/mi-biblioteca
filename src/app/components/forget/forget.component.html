@@ -1,0 +1,38 @@
+<i class="h1 fas fa-book-reader mx-4 mt-4 text-muted"></i>
+<div class="container">
+    <p class="h4 my-3 text-center animated faster fadeIn">Recuperar contraseña</p>
+    <div class="card mx-2 mb-4 z-depth-0 animated faster fadeInUp">
+        <!-- Card content -->
+        <div class="card-body bg-white z-depth-0 text-center">
+            <div class="alert alert-info mx-3 my-3">Para recuperar su contraseña, llene los campos solicitados y luego pulse enviar.
+            </div>
+            <div class="m-3">
+                <div class="md-form text-left">
+                    <i class="fas fa-mail-bulk prefix color-ico"></i>
+                    <input type="text" id="LoginFormUser" class="form-control mb-4" [(ngModel)]="email"
+                        (keyup.enter)="recuperaPass()">
+                    <label for="inputUser">E-mail registrado</label>
+                </div>
+                <div class="md-form text-left">
+                    <i class="fas fa-user prefix color-ico"></i>
+                    <input type="password" id="LoginFormPassword" class="form-control" [(ngModel)]="username"
+                        (keyup.enter)="recuperaPass()">
+                    <label for="inputPass">Usuario registrado</label>
+                </div>
+            </div>
+            <!-- Usuario -->
+
+            <div *ngIf="errorInput" class="alert alert-danger mx-3 my-3 animated faster fadeIn">Usuario o e-mail registrado no esta registrado actualmente.
+            </div>
+            <!-- Back button-->
+            <a routerLink="/login" class="btn btn-danger m-2 waves-effect waves-light text-capitalize rounded-pill"><i
+                    class="fas fa-arrow-circle-left text-white"></i> Volver al inicio</a>
+            <!-- Register button -->
+            <button class="btn btn-success waves-effect waves-light text-capitalize rounded-pill m-2" type="submit"
+                (click)="recuperaPass()">Recuperar contraseña</button>
+        </div>
+
+
+    </div>
+
+</div>

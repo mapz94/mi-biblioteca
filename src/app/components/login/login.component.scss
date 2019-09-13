@@ -1,0 +1,18 @@
+html, body, .container {
+    background-color: transparent !important;
+}
+
+input[type=text]:focus:not([readonly]) + label,input[type=password]:focus:not([readonly]) + label, .color-ico{
+    color: #009688 !important; 
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+    background-color: #009688 !important;
+    border-color: #009688 !important;
+}
+
+.md-form input[type=text]:focus, input[type=password]:focus {
+
+    box-shadow: 0 1px 0 0#009688 !important;
+    border-bottom: 1px solid #009688 !important;
+    } 

@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+html, body{
+  font-family: 'Segoe UI', sans-serif;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+::-webkit-scrollbar {
+  display: none;
+ }
+
+.btn-return {
+  background-color: #6FE06F !important;
+  border-color: #6FE06F !important;
+}
+
+.btn-return-red {
+  background-color: rgb(158, 67, 55) !important;
+  border-color: rgb(158, 67, 55) !important;
+}
