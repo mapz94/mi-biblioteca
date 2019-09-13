@@ -6,7 +6,11 @@
 
         <div class="card-body bg-white z-depth-0 text-center">
             <div class="mx-1">
-                <div class="alert alert-info mx-5">Por favor llene todos los campos solicitados.</div>
+                <div class="alert alert-info mx-5">Por favor llene todos los campos solicitados.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
                 <div class="md-form text-left">
                     <input type="text" id="RegisterFormUser" class="form-control my-3" [(ngModel)]="username">
                     <label for="inputUser">Usuario</label>
