@@ -1,3 +1,7 @@
 .white-filter{
   filter: brightness(0) invert(1) opacity(80%);
 }
+
+.dropdown-item:hover{
+  color: black !important;
+}
