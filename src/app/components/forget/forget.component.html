@@ -26,6 +26,9 @@
             <!-- Usuario -->
 
             <div *ngIf="errorInput" class="alert alert-danger mx-3 my-3 animated faster fadeIn">Usuario o e-mail registrado no esta registrado actualmente.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="errorInput = !errorInput">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <!-- Back button-->
             <a routerLink="/login" class="btn btn-danger m-2 waves-effect waves-light text-capitalize rounded-pill"><i
