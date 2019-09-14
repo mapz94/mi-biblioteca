@@ -13,7 +13,7 @@ export class UserService {
       nombre:'Cristian',
       apellidoPaterno:'Molina',
       apellidoMaterno:'Seguel',
-      email:'c.molina38@alÑumnos.santotomas.cl',
+      email:'c.molina38@alumnos.santotomas.cl',
       contraseña:'admin',
       rut:'19378388-0'
     },
