@@ -11,7 +11,7 @@
     <div class="row mt-5">
         <div class="col-sm mb-5">
             <!-- Card -->
-            <div class="card teal darken-3">
+            <div class="card teal darken-2">
 
                 <div class="accordion" id="cardFAQ">
                     <button class="btn btn-block text-white z-depth-0" type="button" data-toggle="collapse"
@@ -21,9 +21,9 @@
                         </h6>
                     </button>
                     <div id="collapseOne" class="collapse in show" aria-labelledby="headingOne" data-parent="#cardFAQ">
-                        <div class="card-body bg-white">
+                        <div [ngClass]="{'teal darken-1':darkMode,'bg-white':!darkMode}" class="card-body">
                             <!-- Text -->
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                            <p class="card-text" [ngClass]="{'text-white':darkMode}">Some quick example text to build on the card title and make up the bulk
                                 of the card's content.</p>
                         </div>
                     </div>
@@ -34,9 +34,9 @@
                         </h6>
                     </button>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#cardFAQ">
-                        <div class="card-body bg-white">
+                        <div [ngClass]="{'teal darken-1':darkMode,'bg-white':!darkMode}" class="card-body">
                             <!-- Text -->
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                            <p class="card-text" [ngClass]="{'text-white':darkMode}">Some quick example text to build on the card title and make up the bulk
                                 of the card's content.</p>
                         </div>
                     </div>
@@ -47,9 +47,9 @@
                         </h6>
                     </button>
                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#cardFAQ">
-                        <div class="card-body bg-white">
+                        <div [ngClass]="{'teal darken-1':darkMode,'bg-white':!darkMode}" class="card-body">
                             <!-- Text -->
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                            <p class="card-text" [ngClass]="{'text-white':darkMode}">Some quick example text to build on the card title and make up the bulk
                                 of the card's content.</p>
                         </div>
                     </div>

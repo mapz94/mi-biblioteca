@@ -11,12 +11,11 @@
       </div>
     </div>
   </div>
-
 </div>
-<div class="container-fluid animated faster fadeInUp mt-5">
+<div [ngClass]="{'elegant-color': darkMode }" class="container-fluid animated faster fadeInUp mt-5">
   <div class="row">
     <div class="col mt-3">
-      <div class="card z-depth-0">
+      <div [ngClass]="{'elegant-color': darkMode }" class="card z-depth-0">
         <p class="text-center teal-text h4">Servicios disponibles</p>
       </div>
     </div>
@@ -25,7 +24,7 @@
   <div class="row mt-5">
     <div class="col-sm mb-5">
       <!-- Card -->
-      <div class="card teal">
+      <div class="card teal darken-3">
 
         <div class="accordion text-center" id="lPrestamosAccord">
           <button class="btn btn-block text-white z-depth-0" type="button" data-toggle="collapse"
@@ -35,9 +34,9 @@
             </h6>
           </button>
           <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#lPrestamosAccord">
-            <div class="card-body bg-white">
+            <div [ngClass]="{'teal darken-1':darkMode,'bg-white':!darkMode}" class="card-body">
               <!-- Text -->
-              <p class="card-text">¿Tienes algún prestamo vigente y quieres conocer cuando debes devolverlo?, aqui
+              <p class="card-text" [ngClass]="{'text-white':darkMode}">¿Tienes algún prestamo vigente y quieres conocer cuando debes devolverlo?, aqui
                 puedes obtener esa información y mucho más.</p>
               <!-- Button -->
               <a routerLink="/prestamos" class="btn btn-success waves-effect waves-light rounded-pill">ir a mis
@@ -61,7 +60,7 @@
     <div class="col-sm mb-5">
 
       <!-- Card -->
-      <div class="card teal">
+      <div class="card teal darken-3">
 
         <div class="accordion text-center" id="lSolicitarAccord">
           <button class="btn btn-block text-white z-depth-0" type="button" data-toggle="collapse"
@@ -71,9 +70,9 @@
             </h6>
           </button>
           <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#lSolicitarAccord">
-            <div class="card-body bg-white">
+            <div [ngClass]="{'teal darken-1':darkMode,'bg-white':!darkMode}" class="card-body">
               <!-- Text -->
-              <p class="card-text">Aqui puedes consultar nuestros materiales bibliográficos disponibles y si te
+              <p class="card-text" [ngClass]="{'text-white':darkMode}">Aqui puedes consultar nuestros materiales bibliográficos disponibles y si te
                 interesa, solicitar un prestamo.</p>
               <!-- Button -->
               <a routerLink="/search" class="btn btn-success waves-effect waves-light rounded-pill">Ir al buscador</a>

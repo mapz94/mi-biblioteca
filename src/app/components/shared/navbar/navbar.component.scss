@@ -3,5 +3,9 @@
 }
 
 .dropdown-item:hover{
-  color: black !important;
+  background-color: #00796b !important;
+}
+
+.custom-control-label{
+  transition: .5s;
 }

@@ -1,10 +1,10 @@
-<i class="h1 fas fa-book-reader mx-4 mt-4 text-muted"></i>
+<i class="h1 fas fa-book-reader mx-4 mt-4" [ngClass]="{'text-white': darkMode, 'text-muted': !darkMode}"></i>
 <div class="container">
-    <p class="h3 my-5 text-center animated faster fadeIn">Registrar nuevo usuario</p>
+    <p class="h3 my-5 text-center animated faster fadeIn" [ngClass]="{'text-white': darkMode}">Registrar nuevo usuario</p>
     <!-- Back button-->
-    <div class="card mx-2 mb-4 z-depth-0 animated fadeInUp faster">
+    <div class="card mx-2 mb-4 z-depth-0 animated fadeInUp faster" [ngClass]="{'elegant-color': darkMode,'bg-white':!darkMode}">
 
-        <div class="card-body bg-white z-depth-0 text-center">
+        <div class="card-body z-depth-0 text-center" [ngClass]="{'elegant-color': darkMode,'bg-white':!darkMode}">
             <div class="mx-1">
                 <div class="alert alert-info mx-5">Por favor llene todos los campos solicitados.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -13,14 +13,14 @@
                 </div>
                 <div class="md-form text-left">
                     <input type="text" id="RegisterFormUser" class="form-control my-3" [(ngModel)]="username">
-                    <label for="inputUser">Usuario</label>
+                    <label for="inputUser" [ngClass]="{'text-white': darkMode}">Usuario</label>
                     <small *ngIf="userInvalid" class="text-danger animated fadeIn faster">El usuario seleccionado no
                         esta disponible</small>
                 </div>
                 <div class="md-form text-left">
                     <input type="text" id="RegisterFormUser" class="form-control my-3" [(ngModel)]="rut">
-                    <label for="inputUser">RUN</label>
-                    <small id="Help" class="form-text text-muted">
+                    <label for="inputUser" [ngClass]="{'text-white': darkMode}">RUN</label>
+                    <small id="Help" class="form-text" [ngClass]="{'text-white': darkMode, 'text-muted': !darkMode}">
                         Ejemplo de RUN: 19378388-0
                     </small>
                     <small *ngIf="empty == 0" class="text-danger animated fadeIn faster">Complete el campo solicitado
@@ -28,32 +28,32 @@
                 </div>
                 <div class="md-form text-left">
                     <input type="text" id="RegisterFormUser" class="form-control my-3" [(ngModel)]="nameReal">
-                    <label for="inputUser">Nombre</label>
+                    <label for="inputUser" [ngClass]="{'text-white': darkMode}">Nombre</label>
                     <small *ngIf="empty == 1" class="text-danger animated fadeIn faster">Complete el campo solicitado
                         antes de continuar.</small>
                 </div>
                 <div class="md-form text-left">
                     <input type="text" id="RegisterFormUser" class="form-control my-3" [(ngModel)]="apePat">
-                    <label for="inputUser">Apellido Paterno</label>
+                    <label for="inputUser" [ngClass]="{'text-white': darkMode}">Apellido Paterno</label>
                     <small *ngIf="empty == 2" class="text-danger animated fadeIn faster">Complete el campo solicitado
                         antes de continuar.</small>
                 </div>
                 <div class="md-form text-left">
                     <input type="text" id="RegisterFormUser" class="form-control my-3" [(ngModel)]="apeMat">
-                    <label for="inputUser">Apellido Materno</label>
+                    <label for="inputUser" [ngClass]="{'text-white': darkMode}">Apellido Materno</label>
                     <small *ngIf="empty == 3" class="text-danger animated fadeIn faster">Complete el campo solicitado
                         antes de continuar.</small>
                 </div>
                 <div class="md-form text-left">
                         <input type="text" id="RegisterFormUser" class="form-control my-3" [(ngModel)]="email">
-                        <label for="inputUser">Correo electrónico</label>
+                        <label for="inputUser" [ngClass]="{'text-white': darkMode}">Correo electrónico</label>
                         <small *ngIf="empty == 4" class="text-danger animated fadeIn faster">Complete el campo solicitado
                             antes de continuar.</small>
                 </div>
                 <div class="md-form text-left">
                     <input type="password" id="RegisterFormPassword" class="form-control my-3" [(ngModel)]="password">
-                    <label for="inputPass">Contraseña</label>
-                    <small id="Help" class="form-text text-muted">
+                    <label for="inputPass" [ngClass]="{'text-white': darkMode}">Contraseña</label>
+                    <small id="Help" class="form-text" [ngClass]="{'text-white': darkMode, 'text-muted': !darkMode}">
                         Tu contraseña debe contener minimo 8 caracteres.
                     </small>
                     <small *ngIf="passInvalid" class="text-danger">Contraseña ingresada no es valida.</small>
@@ -61,7 +61,7 @@
                 <div class="md-form text-left">
                     <input type="password" id="RegisterFormPasswordConf" class="form-control my-3"
                         [(ngModel)]="confPass">
-                    <label for="inputPass">Confirmar Contraseña</label>
+                    <label for="inputPass" [ngClass]="{'text-white': darkMode}">Confirmar Contraseña</label>
                     <small *ngIf="password != confPass" class="text-danger animated fadeIn faster">Las contraseñas no
                         coinciden.</small>
                 </div>
@@ -71,7 +71,7 @@
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember"
                             [(ngModel)]="check" (change)="checkCheckBoxvalue(check)">
-                        <label class="custom-control-label" for="defaultLoginFormRemember">Acepto los terminos y
+                        <label class="custom-control-label" [ngClass]="{'text-white': darkMode}" for="defaultLoginFormRemember">Acepto los terminos y
                             condiciones</label>
                     </div>
                     <small *ngIf="terminsError" class="text-danger">Para continuar debe aceptar los terminos y
