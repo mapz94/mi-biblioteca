@@ -1,10 +1,18 @@
 <app-navbar></app-navbar>
 <div class="view mt-5 animated faster fadeInUp">
-    <img src="../../assets/img/background-biblio.jpg" class="img-fluid" alt="placeholder">
-    <div class="mask flex-center waves-effect waves-light rgba-teal-strong">
-        <p class="white-text text-center h3">Bienvenido <b>{{ username }}</b> a Mi biblioteca</p>
+  <img src="../../assets/img/background-biblio.jpg" class="img-fluid" alt="placeholder">
+  <div class="mask waves-effect waves-light rgba-teal-strong align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center text-md-center mt-xl-5 mb-5 wow fadeInLeft">
+          <p class="p-2 white-text h3">Bienvenido <b>{{ username }}</b> a Mi biblioteca</p>
+          <!--button class="btn btn-primary btn-lg rounded-pill">Leer más</button-->
+        </div>
+      </div>
     </div>
   </div>
+
+</div>
 <div class="container-fluid animated faster fadeInUp mt-5">
   <div class="row">
     <div class="col mt-3">
@@ -29,9 +37,11 @@
           <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#lPrestamosAccord">
             <div class="card-body bg-white">
               <!-- Text -->
-              <p class="card-text">¿Tienes algún prestamo vigente y quieres conocer cuando debes devolverlo?, aqui puedes obtener esa información y mucho más.</p>
+              <p class="card-text">¿Tienes algún prestamo vigente y quieres conocer cuando debes devolverlo?, aqui
+                puedes obtener esa información y mucho más.</p>
               <!-- Button -->
-              <a routerLink="/prestamos" class="btn btn-success waves-effect waves-light rounded-pill">ir a mis prestamos</a>
+              <a routerLink="/prestamos" class="btn btn-success waves-effect waves-light rounded-pill">ir a mis
+                prestamos</a>
             </div>
           </div>
         </div>
@@ -41,7 +51,7 @@
           <img class="card-img-bottom" src="../../assets/img/libros_prestados.jpg" alt="Card image cap">
           <a>
             <div class="mask rgba-white-slight waves-effect waves-light" data-toggle="collapse"
-            data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"></div>
+              data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"></div>
           </a>
         </div>
 
@@ -63,7 +73,8 @@
           <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#lSolicitarAccord">
             <div class="card-body bg-white">
               <!-- Text -->
-              <p class="card-text">Aqui puedes consultar nuestros materiales bibliográficos disponibles y si te interesa, solicitar un prestamo.</p>
+              <p class="card-text">Aqui puedes consultar nuestros materiales bibliográficos disponibles y si te
+                interesa, solicitar un prestamo.</p>
               <!-- Button -->
               <a routerLink="/search" class="btn btn-success waves-effect waves-light rounded-pill">Ir al buscador</a>
             </div>
@@ -72,11 +83,10 @@
 
         <!-- Card image -->
         <div class="view overlay">
-          <img class="card-img-top rounded-bottom" src="../../../assets/img/busqueda_libros.jpg"
-            alt="Card image cap">
+          <img class="card-img-top rounded-bottom" src="../../../assets/img/busqueda_libros.jpg" alt="Card image cap">
           <a>
             <div class="mask rgba-white-slight waves-effect waves-light" data-toggle="collapse"
-            data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"></div>
+              data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"></div>
           </a>
         </div>
 
