@@ -9,8 +9,9 @@ export class DarkModeService {
   darkMode = new BehaviorSubject(false);
 
   getDarkModeValue() {
+    let value = (/true/i).test(localStorage.getItem('colorMode'));
     this.darkMode.next((/true/i).test(localStorage.getItem('colorMode')));
-    return this.darkMode;
+    return value;
   }
 
   setDarkModeValue( check ) {
