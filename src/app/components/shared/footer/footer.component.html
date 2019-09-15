@@ -1,0 +1,37 @@
+<div class="row py-5 justify-content-between">
+    <div class="col-sm-3 mx-5">
+        <a class="navbar-brand h2 teal-text" routerLink="/home">
+            <i class="fas fa-book-reader mx-2"></i>
+            Mi Biblioteca
+        </a>
+    </div>
+    <div class="col-sm-3 mx-5" [ngClass]="{'text-white':darkMode}">
+        <p class="h6-responsive">Mapa de la página</p>
+        <ul>
+            <a routerLink="/home">Home</a>
+        </ul>
+        <ul>
+            <a routerLink="/search">Materíal bibliográfico</a>
+        </ul>
+        <ul>
+            <a routerLink="/prestamos">Prestamos vigentes</a>
+        </ul>
+        <ul>
+            <a routerLink="/user-info">Mi información</a>
+        </ul>
+    </div>
+    <div class="col-sm-3 m-1" [ngClass]="{'text-white':darkMode}">
+            <i class="fab fa-angular mx-2 h2-responsive"></i>
+            <i class="fab fa-js mx-2 h2-responsive"></i>
+            <i class="fab fa-css3 mx-2 h2-responsive"></i>
+            <i class="fab fa-java mx-2 h2-responsive"></i>
+    </div>
+</div>
+<div class="row py-5 justify-content-between">
+    <div class="col-sm-5 mx-5" [ngClass]="{'text-white':darkMode}">
+        © 2019 Mi biblioteca.<br>
+        Página desarrollada por Cristian Molina y Miguel Pérez.
+    </div>
+    <div class="col-sm-3 m-1">
+    </div>
+</div>

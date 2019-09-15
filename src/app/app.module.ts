@@ -14,6 +14,7 @@ import { CardMaterialbiblioComponent } from './components/shared/card-materialbi
 import { UserInfoComponent } from './components/user-info/user-info.component';
 import { PrestamosComponent } from './components/prestamos/prestamos.component';
 import { SearchComponent } from './components/search/search.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { SearchComponent } from './components/search/search.component';
     CardMaterialbiblioComponent,
     UserInfoComponent,
     PrestamosComponent,
-    SearchComponent
+    SearchComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
