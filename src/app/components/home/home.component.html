@@ -21,7 +21,7 @@
       </div>
     </div>
   </div>
-  <div class="row py-5 justify-content-between" [ngClass]="{'teal darken-3':darkMode, 'grey lighten-3':!darkMode}">
+  <div class="row py-5 justify-content-between z-depth-1" [ngClass]="{'teal darken-3':darkMode, 'grey lighten-3':!darkMode}">
     <div class="col-sm-5 m-1" [ngClass]="{'mb-5':innerWidth < 1000}">
       <img class="z-depth-1 rounded-bottom card-img" src="../../assets/img/libros_prestados.jpg" alt="Card image cap">
     </div>
@@ -36,7 +36,7 @@
         prestamos</a>
     </div>
   </div>
-  <div class="row py-5 justify-content-between" [ngClass]="{'teal darken-4':darkMode, 'grey lighten-2':!darkMode}">
+  <div class="row py-5 justify-content-between z-depth-1" [ngClass]="{'teal darken-4':darkMode, 'grey lighten-2':!darkMode}">
 
     <div class="col-sm-5 mx-5" [ngClass]="{'order-2':innerWidth < 1000}">
       <h6 class="text-center h3-responsive mb-5" [ngClass]="{'text-white':darkMode, 'teal-text':!darkMode}">
@@ -52,78 +52,4 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-<!--div [ngClass]="{'elegant-color': darkMode }" class="container-fluid animated faster fadeInUp mt-5">
-  <div class="row">
-    <div class="col mt-3">
-      <div [ngClass]="{'elegant-color': darkMode }" class="card z-depth-0">
-        <p class="text-center teal-text h4">Servicios disponibles</p>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row mt-5">
-      <div class="col-sm-4 mb-4 d-flex align-items-stretch">
-        <div class="card teal darken-3" id="Card1">
-
-          <div class="accordion text-center" id="lPrestamosAccord">
-            <button class="btn btn-block text-white z-depth-0" type="button" data-toggle="collapse"
-              data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" (click)="collapseOne=!collapseOne">
-              <h6 class="card-title text-center h6 mb-3">
-                Prestamos vigentes
-              </h6>
-            </button>
-            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#lPrestamosAccord">
-              <div [ngClass]="{'teal darken-1':darkMode,'bg-white':!darkMode}" class="card-body mh-100">
-                <p class="card-text" [ngClass]="{'text-white':darkMode}">¿Tienes algún prestamo vigente y quieres
-                  conocer cuando debes devolverlo?, aqui
-                  puedes obtener esa información y mucho más.</p>
-                <a routerLink="/prestamos" class="btn btn-success waves-effect waves-light rounded-pill">ir a mis
-                  prestamos</a>
-              </div>
-            </div>
-          </div>
-          <div *ngIf="!collapseOne" class="view overlay img-overlay" id="Card2">
-            <img class="card-img-bottom rounded-bottom animated fadeIn" src="../../assets/img/libros_prestados.jpg" alt="Card image cap">
-            <a>
-              <div class="mask rgba-white-slight waves-effect waves-light" data-toggle="collapse"
-                data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" (click)="collapseOne=!collapseOne"></div>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4 mb-4">
-        <div class="card teal darken-3">
-          <div class="accordion text-center" id="lSolicitarAccord">
-            <button class="btn btn-block text-white z-depth-0" type="button" data-toggle="collapse"
-              data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" (click)="collapseTwo=!collapseTwo">
-              <h6 class="card-title text-center h6 mb-3">
-                Consultar material bibliografico
-              </h6>
-            </button>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#lSolicitarAccord">
-              <div [ngClass]="{'teal darken-1':darkMode,'bg-white':!darkMode}" class="card-body">
-                <p class="card-text" [ngClass]="{'text-white':darkMode}">Aqui puedes consultar nuestros materiales
-                  bibliográficos disponibles y si te
-                  interesa, solicitar un prestamo.</p>
-                <a routerLink="/search" class="btn btn-success waves-effect waves-light rounded-pill">Ir al buscador</a>
-              </div>
-            </div>
-          </div>
-          <div *ngIf="!collapseTwo" class="view overlay">
-            <img class="card-img-bottom rounded-bottom animated fadeIn" src="../../../assets/img/busqueda_libros.jpg"
-              alt="Card image cap">
-            <a>
-              <div class="mask rgba-white-slight waves-effect waves-light" data-toggle="collapse"
-                data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" (click)="collapseTwo=!collapseTwo"></div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div-->
+<app-footer></app-footer>

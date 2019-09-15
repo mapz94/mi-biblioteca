@@ -22,13 +22,13 @@
     </div>
     <div class="row mt-3">
         <div class="col-sm">
-            <h5 *ngIf="mbiblios.length >= 0 && valorBusqueda.length >= 1" [ngClass]="{'text-white':darkMode}">Buscando
+            <h5 class="animated faster fadeInDown" *ngIf="mbiblios.length >= 0 && valorBusqueda.length >= 1" [ngClass]="{'text-white':darkMode}">Buscando
                 el material bibliográfico
                 "{{termino}}"
             </h5>
         </div>
     </div>
-    <div class="row animated fadeIn fast" *ngIf="mbiblios.length == 0 && valorBusqueda.length >= 1">
+    <div class="row animated fadeInDwon faster" *ngIf="mbiblios.length == 0 && valorBusqueda.length >= 1">
 
         <div class="col-md-12">
             <div class="alert alert-info z-depth-0" role="alert">
@@ -36,12 +36,10 @@
             </div>
         </div>
     </div>
-    <div class="row mt-3 d-flex align-items-stretch">
-        <div class="col-sm">
+    <div class="row m-1 d-flex align-items-stretch">
             <div class="card-columns" *ngIf="mbiblios.length >= 1 && valorBusqueda.length >= 1">
                 <app-card-materialbiblio (mbSeleccionado)="verMaterial( $event )" [materialbiblio]="mbiblio"
                     [index]="mbiblio.id" *ngFor="let mbiblio of mbiblios"></app-card-materialbiblio>
             </div>
-        </div>
     </div>
 </div>

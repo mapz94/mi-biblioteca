@@ -15,6 +15,7 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
 import { PrestamosComponent } from './components/prestamos/prestamos.component';
 import { SearchComponent } from './components/search/search.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
+import { MbiblioComponent } from './components/mbiblio/mbiblio.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FooterComponent } from './components/shared/footer/footer.component';
     UserInfoComponent,
     PrestamosComponent,
     SearchComponent,
-    FooterComponent
+    FooterComponent,
+    MbiblioComponent
   ],
   imports: [
     BrowserModule,

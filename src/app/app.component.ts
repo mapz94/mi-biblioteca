@@ -3,6 +3,8 @@ import { UserlogService } from './services/userlog.service';
 import { Router } from '@angular/router';
 import { UserService } from './services/user.service';
 import { DarkModeService } from './services/dark-mode.service';
+import { Button } from 'protractor';
+import { delay } from 'q';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +21,6 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    console.log(this.dark.getDarkModeValue());
     this.dark.setDarkModeValue(this.dark.getDarkModeValue());
     this.dark.darkMode.subscribe(dark => this.darkMode = dark);
     if (this.darkMode) {
@@ -42,5 +43,11 @@ export class AppComponent {
   @HostListener('window:scroll', ['$event']) 
   doSomething(event) {
     this.scrollPos = window.pageYOffset;
+    let button = document.getElementsByClassName('btn-circle') as HTMLCollectionOf<HTMLElement>;
+    if(this.scrollPos > 250){
+      button[0].style.right = '5%';
+    } else {
+      button[0].style.right = '-50%';
+    }
   }
 }

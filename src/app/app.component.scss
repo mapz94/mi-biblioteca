@@ -1,8 +1,13 @@
-.buttonUp{
+.btn-circle{
     position: fixed;
     bottom: 5%;
-    right: 5%;
+    right: -50%;
+    height: 75px;
+    width: 75px;
     z-index: 999;
+    padding: 25px;
     cursor: pointer;
-
+    font-size: 18px;
+    color: whitesmoke;
+    transition: .5s;
 }

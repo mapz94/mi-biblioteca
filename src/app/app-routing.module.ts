@@ -9,6 +9,7 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
 import { PrestamosComponent } from './components/prestamos/prestamos.component';
 import { SearchComponent } from './components/search/search.component';
 import { UserlogService } from './services/userlog.service';
+import { MbiblioComponent } from './components/mbiblio/mbiblio.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'user-info', component: UserInfoComponent},
   { path: 'prestamos', component: PrestamosComponent},
   { path: 'search', component: SearchComponent},
+  { path: 'search/:id', component: MbiblioComponent},
   { path: '', redirectTo: 'login', pathMatch: 'full'}
 ];
 

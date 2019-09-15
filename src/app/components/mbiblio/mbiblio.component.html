@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+
+<div class="container faster animated fadeInUp mt-5">
+
+    <div class="row mt-5">
+        <div class="col-sm">
+            <!-- Button -->
+            <a routerLink="/search"
+                class="btn btn-block btn-return-red waves-effect waves-light text-capitalize rounded-pill text-white"><i
+                    class="fas fa-arrow-circle-left text-white"></i> Volver atras</a>
+        </div>
+    </div>
+    <div class="row mt-5 justify-content-between d-flex align-items-stretch">
+        <div class="col-sm-4 mb-4">
+            <img [src]="materialbiblio.img" class="card-img-top z-depth-1" [alt]="materialbiblio.titulo">
+        </div>
+        <div class="col-sm-6">
+            <div class="card p-3 teal animated fadeIn">
+                <div class="card-body teal">
+                    <p class="card-title text-white text-center mb-3 h5-responsive">{{materialbiblio.tipo}}</p>
+                    <p class="card-title text-white text-center mb-3 h2-responsive">{{materialbiblio.titulo}}</p>
+                    <br>
+                    <p class="card-text text-white h6-responsive">
+                        <b>Descripción:</b> {{materialbiblio.descripcion}}<br><br>
+                        <b>Categoria:</b> {{materialbiblio.categoria}}<br>
+                        <b>Publicado con fecha:</b> {{materialbiblio.fechaPublicacion}}</p>
+                    <button (click)="solicitarMB()" type="button"
+                        class="btn btn-white btn-block rounded-pill z-depth-1 h5 text-capitalize">
+                        Solicitar prestado
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
