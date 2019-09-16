@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { UserlogService } from 'src/app/services/userlog.service';
 import { Router } from '@angular/router';
 import { DarkModeService } from 'src/app/services/dark-mode.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -15,8 +16,9 @@ export class NavbarComponent implements OnInit {
   darkMode:boolean;
   check:boolean;
   body = document.getElementsByTagName('body') as HTMLCollectionOf<HTMLElement>;
+  userData:any= [];
   
-  constructor(private user: UserlogService, private router: Router, private dark: DarkModeService) { }
+  constructor(private userLog: UserlogService, private router: Router, private dark: DarkModeService, private user: UserService) { }
 
   ngOnInit() {
     this.innerWidth = window.innerWidth;
@@ -27,6 +29,7 @@ export class NavbarComponent implements OnInit {
     } else {
       this.body[0].style.backgroundColor = "#fff";
     }
+    this.userData = this.user.getUser(this.userLog.userID);
   }
 
   checkDarkMode(check:any) {
@@ -49,7 +52,7 @@ export class NavbarComponent implements OnInit {
   }
 
   salirCuenta() {
-    this.user.forgetUser();
+    this.userLog.forgetUser();
     this.router.navigate(['/login']);
   }
 }

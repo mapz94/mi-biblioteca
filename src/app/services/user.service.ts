@@ -15,7 +15,8 @@ export class UserService {
       apellidoMaterno:'Seguel',
       email:'c.molina38@alumnos.santotomas.cl',
       contraseña:'admin',
-      rut:'19378388-0'
+      rut:'19378388-0',
+      imgAvatar: '../../../assets/img/Avatar/shaderkillAvatar.jpg'
     },
     {
       id: 1,
@@ -25,7 +26,8 @@ export class UserService {
       apellidoMaterno:'pendiente',
       email:'correo@alumnos.santotomas.cl',
       contraseña:'admin',
-      rut:'1-9'
+      rut:'1-9',
+      imgAvatar: '../../../assets/img/Avatar/defaultAvatar.jpg'
     }
   ]
 
@@ -77,7 +79,7 @@ export class UserService {
 
   registerUser( user:string, name:string, apePat:string, apeMat:string, email:string, password:string, rut:string){
     let idx = this.user.length;
-    var newUser: User = {id:idx,username:user,nombre:name,apellidoPaterno:apePat,apellidoMaterno:apeMat, email:email, contraseña:password, rut:rut };
+    var newUser: User = {id:idx,username:user,nombre:name,apellidoPaterno:apePat,apellidoMaterno:apeMat, email:email, contraseña:password, rut:rut, imgAvatar:'../../../assets/img/Avatar/defaultAvatar.jpg' };
     this.user.push(newUser);
     return console.log('Usuario creado con exito.');
   }
@@ -92,4 +94,5 @@ export interface User{
   email:string;
   contraseña:string;
   rut:string;
+  imgAvatar:string;
 } 

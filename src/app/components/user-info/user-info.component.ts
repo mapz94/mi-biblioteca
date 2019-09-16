@@ -19,7 +19,6 @@ export class UserInfoComponent implements OnInit {
   ngOnInit() {
     this.dark.darkMode.subscribe(dark => this.darkMode = dark);
     this.userData = this.user.getUser(this.userLog.userID);
-    console.log(this.userData);
   }
 
 }
