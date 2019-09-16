@@ -1,0 +1,42 @@
+.btn {
+  text-transform: capitalize;
+}
+
+.fadeOut {
+  animation: fadeOut .5s;
+}
+
+@keyframes fadeOut {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+.rotate180 {
+  animation: rotate180 .3s;
+}
+
+@keyframes rotate180 {
+  from {
+    transform: rotate(180deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.animated-transition{
+  -webkit-transition:width 300ms ease-in-out, height 300ms ease-in-out;
+  -moz-transition:width 300ms ease-in-out, height 300ms ease-in-out;
+  -o-transition:width 300ms ease-in-out, height 300ms ease-in-out;
+  transition:width 300ms ease-in-out, height 300ms ease-in-out;
+}
+
+.card-special-bottom {
+  display: float;
+}
+
+
