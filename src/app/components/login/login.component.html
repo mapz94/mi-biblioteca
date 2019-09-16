@@ -3,7 +3,7 @@
         <div class="custom-control custom-switch text-right">
                 <input type="checkbox" class="custom-control-input" id="customSwitches" 
                 [(ngModel)]="checkMode" (change)="checkDarkMode(checkMode)">
-                <label [ngClass]="{'text-white': darkMode}" class="custom-control-label" for="customSwitches">Modo oscuro</label>
+                <label [ngClass]="{'text-white': darkMode}" class="custom-control-label" for="customSwitches">{{ darkMode==true? 'Tema oscuro':'Tema luminoso' }}</label>
             </div>
     <br><br>
     <p class="h4 mb-1 text-center" [ngClass]="{'text-white': darkMode, 'text-muted': !darkMode}">Bienvenido a <b>Mi Biblioteca</b> en linea</p>

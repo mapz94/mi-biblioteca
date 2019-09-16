@@ -28,7 +28,7 @@
             <div class="custom-control custom-switch">
                 <input type="checkbox" class="custom-control-input" id="customSwitches" 
                 [(ngModel)]="check" (change)="checkDarkMode(check)">
-                <label [ngClass]="{'text-white': darkMode}" class="custom-control-label" for="customSwitches">Modo oscuro</label>
+                <label [ngClass]="{'text-white': darkMode}" class="custom-control-label" for="customSwitches">{{ darkMode==true? 'Tema oscuro':'Tema luminoso' }}</label>
             </div>
         </li>
     </ul>
