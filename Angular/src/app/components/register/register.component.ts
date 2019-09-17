@@ -3,6 +3,7 @@ import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { DarkModeService } from 'src/app/services/dark-mode.service';
 import { User } from 'src/app/class/User';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -43,7 +44,10 @@ export class RegisterComponent implements OnInit {
 
   registerUser(): void {
     this.userService.create(this.user).subscribe(
-      response => this.router.navigate(['/login'])
-    );
+      response => {
+        this.router.navigate(['/login']);
+        Swal.fire({position: 'top', title: 'Registro',
+                   text: `Tu usuario: "${this.user.nombre}" ha sido creado con exito!`, type: 'success'});
+      });
   }
 }

@@ -13,18 +13,21 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getUsers() {
+  getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.urlUsers);
   }
 
-  getUserById(id: string) {
-    return this.http.get<User[]>(this.urlUsers + '/' + id);
+  getUserById(id: string): Observable<User> {
+    return this.http.get<User>(`${this.urlUsers}/${id}`);
   }
 
   create(user: User): Observable <User> {
     return this.http.post<User>(this.urlUsers, user, {headers: this.httpHeaders});
   }
 
+  update(user: User): Observable<User> {
+    return this.http.put<User>(`${this.urlUsers}/${user.id}`, user, {headers: this.httpHeaders});
+  }
 }
 
 

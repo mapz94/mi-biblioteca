@@ -17,9 +17,9 @@ export class NavbarComponent implements OnInit {
   darkMode: boolean;
   check: boolean;
   body = document.getElementsByTagName('body') as HTMLCollectionOf<HTMLElement>;
-  userData: User[] = [];
+  userData: User = new User();
 
-  constructor(private userLog: UserlogService, private router: Router, private dark: DarkModeService, private user: UserService) { }
+  constructor(private userLog: UserlogService, private router: Router, private dark: DarkModeService, private userService: UserService) { }
 
   ngOnInit() {
     this.innerWidth = window.innerWidth;
@@ -30,7 +30,7 @@ export class NavbarComponent implements OnInit {
     } else {
       this.body[0].style.backgroundColor = '#fff';
     }
-    this.user.getUserById(this.userLog.userID).subscribe(user => this.userData = user);
+    this.userService.getUserById(this.userLog.userID).subscribe(user => this.userData = user);
   }
 
   checkDarkMode(check: any) {

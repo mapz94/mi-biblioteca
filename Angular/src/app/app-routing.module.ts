@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'forget', component: ForgetComponent},
-  { path: 'user-info', component: UserInfoComponent},
+  { path: 'user/:id', component: UserInfoComponent},
   { path: 'prestamos', component: PrestamosComponent},
   { path: 'search', component: SearchComponent},
   { path: 'search/:id', component: MbiblioComponent},

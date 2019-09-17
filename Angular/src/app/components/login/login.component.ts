@@ -4,6 +4,7 @@ import { UserlogService } from 'src/app/services/userlog.service';
 import { UserService } from 'src/app/services/user.service';
 import { DarkModeService } from 'src/app/services/dark-mode.service';
 import { User } from 'src/app/class/User';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -73,6 +74,12 @@ export class LoginComponent implements OnInit {
           this.userLog.userID = String(i.id);
           this.userLog.userLog = i.username;
           this.router.navigate(['/home']);
+          Swal.fire({position: 'center', title: `Bienvenido ${i.nombre}!`,
+                   text: 'Cargando...',
+                   timer: 1000,
+                  onBeforeOpen: () => {
+                    Swal.showLoading(); },
+                  onClose: () => {} });
         }
       }
       this.errorLogin = true;

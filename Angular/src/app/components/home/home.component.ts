@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
   collapseTwo: boolean;
   innerWidth: number;
 
-  constructor(private userLog: UserlogService, private router: Router, private user: UserService, private dark: DarkModeService) {
+  constructor(private userLog: UserlogService, private router: Router, private dark: DarkModeService) {
 
   }
 
@@ -33,11 +33,11 @@ export class HomeComponent implements OnInit {
     this.dark.darkMode.subscribe(dark => this.darkMode = dark);
     this.innerWidth = window.innerWidth;
 
-    if (localStorage.getItem('usuario_activo') != null && localStorage.getItem('id_activo')) {
+    if (localStorage.getItem('usuario_activo') != null && localStorage.getItem('id_activo') != null) {
       this.userLog.userLog = localStorage.getItem('usuario_activo');
       this.userLog.userID = localStorage.getItem('id_activo');
     }
-    else if (this.userLog.userLog === '') {
+    if (this.userLog.userLog === '') {
       this.router.navigate(['/login']);
     }
     this.username = this.userLog.userLog.toLowerCase();
