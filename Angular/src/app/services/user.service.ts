@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { UserlogService } from './userlog.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../class/User';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,7 @@ import { User } from '../class/User';
 export class UserService {
 
   private urlUsers = 'http://localhost:8080/biblio/users';
+  private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http: HttpClient) { }
 
@@ -20,10 +21,10 @@ export class UserService {
     return this.http.get<User[]>(this.urlUsers + '/' + id);
   }
 
-  registerUser(user: string, name: string, apePat: string, apeMat: string, email: string, password: string, rut: string) {
-    console.log('Registro deshabilitado.');
-    return null;
+  create(user: User): Observable <User> {
+    return this.http.post<User>(this.urlUsers, user, {headers: this.httpHeaders});
   }
+
 }
 
 
