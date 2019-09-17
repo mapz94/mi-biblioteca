@@ -8,34 +8,9 @@ import { User } from '../class/User';
 })
 export class UserService {
 
-  protected user: User[] = [
-    {
-      id: 0,
-      username: 'shaderkill',
-      nombre: 'Cristian',
-      apellidoPaterno: 'Molina',
-      apellidoMaterno: 'Seguel',
-      email: 'c.molina38@alumnos.santotomas.cl',
-      password: 'admin',
-      rut: '19378388-0',
-      imgAvatar: '../../../assets/img/Avatar/shaderkillAvatar.jpg'
-    },
-    {
-      id: 1,
-      username: 'miguel',
-      nombre: 'Miguel',
-      apellidoPaterno: 'Perez',
-      apellidoMaterno: 'pendiente',
-      email: 'correo@alumnos.santotomas.cl',
-      password: 'admin',
-      rut: '1-9',
-      imgAvatar: '../../../assets/img/Avatar/defaultAvatar.jpg'
-    }
-  ];
+  private urlUsers = 'http://localhost:8080/biblio/users';
 
-  private urlUsers = 'http://localhost:8080/users';
-
-  constructor(private userLog: UserlogService, private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getUsers() {
     return this.http.get<User[]>(this.urlUsers);
@@ -46,6 +21,7 @@ export class UserService {
   }
 
   registerUser(user: string, name: string, apePat: string, apeMat: string, email: string, password: string, rut: string) {
+    console.log('Registro deshabilitado.');
     return null;
   }
 }

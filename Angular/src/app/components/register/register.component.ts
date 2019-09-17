@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { DarkModeService } from 'src/app/services/dark-mode.service';
+import { User } from 'src/app/class/User';
 
 @Component({
   selector: 'app-register',
@@ -10,18 +11,19 @@ import { DarkModeService } from 'src/app/services/dark-mode.service';
 })
 export class RegisterComponent implements OnInit {
 
-  username: string = '';
-  password: string = '';
-  confPass: string = '';
-  nameReal: string = '';
-  apePat: string = '';
-  apeMat: string = '';
-  email: string = '';
-  rut: string = '';
-  passInvalid: boolean = false;
-  userInvalid: boolean = false;
-  termins: boolean = false;
-  terminsError: boolean = false;
+  username = '';
+  password = '';
+  confPass = '';
+  nameReal = '';
+  apePat = '';
+  apeMat = '';
+  email = '';
+  rut = '';
+  users: User[] = [];
+  passInvalid = false;
+  userInvalid = false;
+  termins = false;
+  terminsError = false;
   empty: number;
   darkMode: boolean;
 
@@ -29,13 +31,23 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.dark.darkMode.subscribe(dark => this.darkMode = dark);
+    this.user.getUsers().subscribe(user => this.users = user);
   }
 
   checkCheckBoxvalue(check: any) {
     this.termins = check;
   }
 
-  registerUser() {
+  getUsername(username: string): boolean {
+    for (const i of this.users) {
+      if (i.username === this.username) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  registerUser(): void {
     if (!this.termins) {
       this.terminsError = true;
       return;
@@ -60,18 +72,15 @@ export class RegisterComponent implements OnInit {
       this.empty = 4;
       return;
     }
-    if (this.user.getUsername(this.username)) {
+    if (this.getUsername(this.username)) {
       this.userInvalid = true;
     } else {
       if (this.password === this.confPass && this.password.length > 7) {
-        this.user.registerUser(this.username, this.nameReal, this.apePat, this.apeMat, this.email, this.password, this.rut)
+        this.user.registerUser(this.username, this.nameReal, this.apePat, this.apeMat, this.email, this.password, this.rut);
         this.router.navigate(['/login']);
       } else {
         this.passInvalid = true;
-        return;
       }
     }
-
   }
-
 }

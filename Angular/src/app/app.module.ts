@@ -16,6 +16,7 @@ import { PrestamosComponent } from './components/prestamos/prestamos.component';
 import { SearchComponent } from './components/search/search.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { MbiblioComponent } from './components/mbiblio/mbiblio.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { MbiblioComponent } from './components/mbiblio/mbiblio.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

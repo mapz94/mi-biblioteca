@@ -58,13 +58,14 @@ export class LoginComponent implements OnInit {
       }
       this.router.navigate(['/home']);
     } else {
-      return false;
+      return true;
     }
   }
 
   validarLogin() {
-    if (!this.validateAdmin) {
-      for (const i of this.users) {
+    if (this.validateAdmin) {
+      // tslint:disable-next-line: prefer-const
+      for (let i of this.users) {
         if (i.password === this.password && i.username === this.username) {
           if (this.remember) {
             this.userLog.rememberUser(i.username, String(i.id));
