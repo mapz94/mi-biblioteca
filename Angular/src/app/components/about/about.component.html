@@ -1,0 +1,60 @@
+<app-navbar></app-navbar>
+
+<div class="container animated faster fadeInUp mt-5">
+    <div class="row">
+        <div class="col-sm">
+            <!-- Button -->
+            <a routerLink="/home" class="btn btn-block btn-return-red waves-effect waves-light text-capitalize rounded-pill text-white"><i
+                    class="fas fa-arrow-circle-left text-white"></i> Volver al inicio</a>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-sm mb-5">
+            <!-- Card -->
+            <div class="card teal darken-2">
+
+                <div class="accordion" id="cardFAQ">
+                    <button class="btn btn-block text-white z-depth-0" type="button" data-toggle="collapse"
+                        data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <h6 class="card-title text-center text-capitalize mb-3">
+                            ¿Quienes somos?
+                        </h6>
+                    </button>
+                    <div id="collapseOne" class="collapse in show" aria-labelledby="headingOne" data-parent="#cardFAQ">
+                        <div [ngClass]="{'teal darken-1':darkMode,'bg-white':!darkMode}" class="card-body">
+                            <!-- Text -->
+                            <p class="card-text" [ngClass]="{'text-white':darkMode}">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-block text-white z-depth-0" type="button" data-toggle="collapse"
+                        data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                        <h6 class="card-title text-center text-capitalize mb-3">
+                            ¿Como solicito un prestamo?
+                        </h6>
+                    </button>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#cardFAQ">
+                        <div [ngClass]="{'teal darken-1':darkMode,'bg-white':!darkMode}" class="card-body">
+                            <!-- Text -->
+                            <p class="card-text" [ngClass]="{'text-white':darkMode}">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-block text-white z-depth-0" type="button" data-toggle="collapse"
+                        data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                        <h6 class="card-title text-center text-capitalize mb-3">
+                            ¿Como puedo ver un prestamo vigente?
+                        </h6>
+                    </button>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#cardFAQ">
+                        <div [ngClass]="{'teal darken-1':darkMode,'bg-white':!darkMode}" class="card-body">
+                            <!-- Text -->
+                            <p class="card-text" [ngClass]="{'text-white':darkMode}">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
