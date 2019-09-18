@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MbibliograficoService } from 'src/app/services/mbibliografico.service';
 import { DarkModeService } from 'src/app/services/dark-mode.service';
+import { MaterialBibliografico } from 'src/app/class/MaterialBibliografico';
 
 @Component({
   selector: 'app-search',
@@ -10,14 +11,15 @@ import { DarkModeService } from 'src/app/services/dark-mode.service';
 })
 export class SearchComponent implements OnInit {
 
-  mbiblios: any[] = []
+  materialBibliografico: MaterialBibliografico[] = [];
+  mBiblioBuscado: MaterialBibliografico[] = [];
   termino: string;
-  valorBusqueda: string = '';
+  valorBusqueda = '';
 
   constructor(private activatedRoute: ActivatedRoute,
-    private _mbService: MbibliograficoService,
-    private router: Router,
-    private dark: DarkModeService) {
+              private mBibliograficoService: MbibliograficoService,
+              private router: Router,
+              private dark: DarkModeService) {
 
   }
 
@@ -25,17 +27,40 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     this.dark.darkMode.subscribe(dark => this.darkMode = dark);
+    this.mBibliograficoService.getMbiblios().subscribe(val => this.materialBibliografico = val);
+    console.log(this.materialBibliografico);
   }
 
 
   buscarMB(valorBusqueda: string) {
     if (valorBusqueda.length >= 1) {
       this.termino = valorBusqueda;
-      this.mbiblios = this._mbService.buscarMbiblios(valorBusqueda);
+      this.mBiblioBuscado = this.buscarMbiblios(valorBusqueda);
     }
   }
 
-  verMaterial(){
+  buscarMbiblios(termino: string) {
+
+    const mbiblioArr: MaterialBibliografico[] = [];
+    termino = termino.toLowerCase();
+
+    for (let i = 0; i < this.materialBibliografico.length; i++) {
+
+      const texto = this.materialBibliografico[i];
+
+      const nombre = texto.titulo.toLowerCase();
+      if (nombre.indexOf(termino) >= 0) {
+        texto.id = i;
+        mbiblioArr.push(texto);
+      }
+      if (mbiblioArr.length === 10) {
+        return mbiblioArr;
+      }
+    }
+    return mbiblioArr;
+  }
+
+  verMaterial() {
   }
 
 }

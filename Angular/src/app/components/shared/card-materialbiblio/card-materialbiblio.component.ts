@@ -13,16 +13,16 @@ export class CardMaterialbiblioComponent implements OnInit {
 
   @Output() mbSeleccionado: EventEmitter<number>;
 
-  constructor( private router:Router) {
+  constructor( private router: Router) {
     this.mbSeleccionado = new EventEmitter();
   }
 
   ngOnInit() {
   }
 
-  verMaterial(){
+  verMaterial() {
     this.mbSeleccionado.emit(this.index);
-    this.router.navigate(['/search/'+this.index]);
+    this.router.navigate([`/search/${this.index}`]);
   }
 
 }

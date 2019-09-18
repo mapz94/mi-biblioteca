@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
+import { MaterialBibliografico } from '../class/MaterialBibliografico';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of, Subscriber } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MbibliograficoService {
 
-  private mbiblio: Mbibliografico[] = [
+  private mbiblio: MaterialBibliografico[] = [
     {
       id: 0,
       img: 'https://pictures.abebooks.com/JEREZ/5630295808.jpg',
@@ -22,7 +25,7 @@ export class MbibliograficoService {
       tipo: 'Libro',
       categoria: 'Absurdo',
       fechaPublicacion: '1915',
-      descripcion: ''
+      descripcion: 'Descripción no disponible.'
     },
     {
       id: 2,
@@ -31,7 +34,7 @@ export class MbibliograficoService {
       titulo: 'Los juegos del hambre',
       categoria: 'Distopía',
       fechaPublicacion: '2008',
-      descripcion: ''
+      descripcion: 'Descripción no disponible.'
     },
     {
       id: 3,
@@ -40,7 +43,7 @@ export class MbibliograficoService {
       titulo: 'Harry Potter y la piedra filosofal',
       categoria: 'Novela',
       fechaPublicacion: '1997',
-      descripcion: ''
+      descripcion: 'Descripción no disponible.'
     },
     {
       id: 4,
@@ -49,7 +52,7 @@ export class MbibliograficoService {
       titulo: 'Proyecto tesis: Las paginas webs y sus consecuencias',
       categoria: 'Tesis',
       fechaPublicacion: '2018',
-      descripcion: ''
+      descripcion: 'Descripción no disponible.'
     },
     {
       id: 5,
@@ -58,7 +61,7 @@ export class MbibliograficoService {
       titulo: 'Programación para novatos',
       categoria: 'Programación',
       fechaPublicacion: '2010',
-      descripcion: ''
+      descripcion: 'Descripción no disponible.'
     },
     {
       id: 6,
@@ -67,7 +70,7 @@ export class MbibliograficoService {
       titulo: 'Revista interesante',
       categoria: 'Tecnología',
       fechaPublicacion: '2019',
-      descripcion: ''
+      descripcion: 'Descripción no disponible.'
     },
     {
       id: 7,
@@ -76,7 +79,7 @@ export class MbibliograficoService {
       titulo: 'Gracia y el Forastero',
       categoria: 'Romance',
       fechaPublicacion: '1964',
-      descripcion: ''
+      descripcion: 'Descripción no disponible.'
     },
     {
       id: 8,
@@ -85,7 +88,7 @@ export class MbibliograficoService {
       titulo: 'Cantar de Mio Cid',
       categoria: 'Poesía',
       fechaPublicacion: '1200',
-      descripcion: ''
+      descripcion: 'Descripción no disponible.'
     },
     {
       id: 9,
@@ -94,7 +97,7 @@ export class MbibliograficoService {
       titulo: 'Rebelion en la granja',
       categoria: 'Fabula',
       fechaPublicacion: '1945',
-      descripcion: ''
+      descripcion: 'Descripción no disponible.'
     },
     {
       id: 10,
@@ -103,7 +106,7 @@ export class MbibliograficoService {
       titulo: 'Un viejo que leia novelas de amor',
       categoria: 'Romance',
       fechaPublicacion: '1988',
-      descripcion: ''
+      descripcion: 'Descripción no disponible.'
     },
     {
       id: 11,
@@ -112,7 +115,7 @@ export class MbibliograficoService {
       titulo: 'Proyecto Tesis: Mi biblioteca en linea',
       categoria: 'Tesis',
       fechaPublicacion: '2019',
-      descripcion: ''
+      descripcion: 'Descripción no disponible.'
     },
     {
       id: 12,
@@ -121,54 +124,32 @@ export class MbibliograficoService {
       titulo: 'Charlie y la fabrica de chocolate',
       categoria: 'Fantasia',
       fechaPublicacion: '1964',
-      descripcion: ''
+      descripcion: 'Descripción no disponible.'
     }
   ];
 
+  private urlBiblio = 'http://localhost:8080/biblio/mb';
+  private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-  constructor() {
-    console.log("Servicio 'Material Bibliografico' cargado");
+  constructor(private http: HttpClient) { }
+
+
+  getMbiblios(): Observable<MaterialBibliografico[]> {
+    return new Observable((observer: Subscriber<any>) => {
+      observer.next(this.mbiblio);
+      observer.complete();
+    });
+
+    // return this.http.get<MaterialBibliografico[]>(this.urlBiblio);
   }
 
-
-  getMbiblios() {
-    return this.mbiblio;
-  }
-
-  getMBiblio(id: string) {
-    return this.mbiblio[id];
-  }
-
-  buscarMbiblios(termino: string) {
-
-    let mbiblioArr: Mbibliografico[] = [];
-    termino = termino.toLowerCase();
-
-    for (let i = 0; i < this.mbiblio.length; i++) {
-
-      let texto = this.mbiblio[i];
-
-      let nombre = texto.titulo.toLowerCase();
-      if (nombre.indexOf(termino) >= 0) {
-        texto.id = i;
-        mbiblioArr.push(texto);
-      }
-      if (mbiblioArr.length === 10) {
-        return mbiblioArr;
-      }
-    }
-
-    return mbiblioArr;
-
+  getMBiblioById(id: string): Observable<MaterialBibliografico> {
+    return new Observable((observer: Subscriber<any>) => {
+      observer.next(this.mbiblio[id]);
+      observer.complete();
+    });
+    // return this.http.get<MaterialBibliografico>(`${this.urlBiblio}/${id}`);
   }
 }
 
-export interface Mbibliografico {
-  id: number;
-  img: any;
-  tipo: string;
-  titulo: string;
-  categoria: string;
-  fechaPublicacion: string;
-  descripcion: string;
-} 
+
