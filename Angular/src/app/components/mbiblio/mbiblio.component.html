@@ -1,12 +1,11 @@
 <app-navbar></app-navbar>
 
-<div class="container faster animated fadeInUp mt-5">
+<div class="container faster animated fadeInUpBig mt-5">
 
     <div class="row mt-5">
         <div class="col-sm">
             <!-- Button -->
-            <a routerLink="/search"
-                class="btn btn-block btn-return-red waves-effect waves-light text-capitalize rounded-pill text-white"><i
+            <a routerLink="/search" class="btn btn-block btn-return-red waves-effect waves-light text-capitalize rounded-pill text-white"><i
                     class="fas fa-arrow-circle-left text-white"></i> Volver atras</a>
         </div>
     </div>
@@ -24,8 +23,7 @@
                         <b>Descripción:</b> {{materialbiblio.descripcion}}<br><br>
                         <b>Categoria:</b> {{materialbiblio.categoria}}<br>
                         <b>Publicado con fecha:</b> {{materialbiblio.fechaPublicacion}}</p>
-                    <button (click)="solicitarMB()" type="button"
-                        class="btn btn-white btn-block rounded-pill z-depth-1 h5 text-capitalize">
+                    <button (click)="solicitarMB()" type="button" class="btn btn-white btn-block rounded-pill z-depth-1 h5 text-capitalize">
                         Solicitar prestado
                     </button>
                 </div>
