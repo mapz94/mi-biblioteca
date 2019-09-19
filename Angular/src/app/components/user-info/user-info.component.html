@@ -1,7 +1,5 @@
-<app-navbar></app-navbar>
-
-<div class="container animated faster fadeInUp" [ngClass]="{'text-white': darkMode}">
-    <div class="row mt-3">
+<div class="container animated faster fadeInUp py-5" [ngClass]="{'text-white': darkMode}">
+    <div class="row">
         <div class="col-sm">
             <!-- Button -->
 
@@ -40,7 +38,7 @@
                     Rol único nacional (RUN)
                 </div>
                 <div class="col-sm">
-                    <input type="text" class="form-control disabled border-info" [(ngModel)]="user.rut" name="rut">
+                    <input type="text" class="form-control disabled border-info" [(ngModel)]="user.rut" name="rut" formatRut>
                 </div>
             </div>
             <div class="form-group row m-3">

@@ -21,6 +21,7 @@
     "@angular/router": "^8.2.5",
     "jquery": "^3.4.1",
     "mdbootstrap": "^4.8.9",
+    "ng2-rut": "^0.3.2",
     "popper.js": "^1.15.0",
     "rxjs": "~6.5.2",
     "sweetalert2": "^8.17.4",

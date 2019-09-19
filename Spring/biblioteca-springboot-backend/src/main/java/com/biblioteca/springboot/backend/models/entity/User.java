@@ -20,10 +20,11 @@ public class User implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(nullable=false, unique=true)
 	private String username;
 	private String nombre;
 	
-	@Column(name="fecha_nacimiento")
+	@Column(name="fecha_nacimiento", nullable=false)
 	private Date fechaNacimiento;
 	
 	@Column(name="ap_paterno")
@@ -40,8 +41,10 @@ public class User implements Serializable {
 	@Column(name="ap_materno")
 	private String apellidoMaterno;
 	
+	@Column(nullable=false, unique=true)
 	private String email;
 	private String password;
+	@Column(nullable=false, unique=true)
 	private String rut;
 	
 	@Column(name="img_avatar")

@@ -1,9 +1,13 @@
 package com.biblioteca.springboot.backend.restcontrollers;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.biblioteca.springboot.backend.models.entity.User;
@@ -32,32 +35,77 @@ public class UserRestController {
 	}
 	
 	@GetMapping("/users/{id}")
-	public User show(@PathVariable Long id) {
-		return userService.findById(id);
+	public ResponseEntity<?> show(@PathVariable Long id) {
+		User userSearch = null;
+		Map<String, Object> response = new HashMap<>();
+		try { 
+			userSearch = userService.findById(id);
+		} catch(DataAccessException e) {
+			response.put("mensaje", "Error al realizar la busqueda en la base de datos.");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		if ( userSearch == null ) {
+			response.put("mensaje", "El usuario ID '".concat(id.toString()).concat("' no existe en la base de datos."));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<User>(userSearch, HttpStatus.OK);
 	}
 	
 	@PostMapping("/users")
-	@ResponseStatus(HttpStatus.CREATED)
-	public User create(@RequestBody User user) {
-		return userService.save(user);
+	public ResponseEntity<?> create(@RequestBody User user) {
+		User userCreated = null;
+		Map<String, Object> response = new HashMap<>();
+		try {
+			userCreated = userService.save(user);
+		} catch(DataAccessException e) {
+			response.put("mensaje", "Error al realizar el insert en la base de datos.");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		response.put("mensaje", "El cliente ha sido creado con éxito!.");
+		response.put("usuario", userCreated);
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/users/{id}")
-	@ResponseStatus(HttpStatus.CREATED)
-	public User update(@RequestBody User user, @PathVariable Long id) {
+	public ResponseEntity<?> update(@RequestBody User user, @PathVariable Long id) {
 		User userActual = userService.findById(id);
-		userActual.setNombre(user.getNombre());
-		userActual.setApellidoPaterno(user.getApellidoPaterno());
-		userActual.setApellidoMaterno(user.getApellidoMaterno());
-		userActual.setEmail(user.getEmail());
-		userActual.setPassword(user.getPassword());
-		return userService.save(userActual);
+		User userUpdated = null;
+		Map<String, Object> response = new HashMap<>();
+		if ( userActual == null ) {
+			response.put("mensaje", "El usuario ID '".concat(id.toString()).concat("' no existe en la base de datos."));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		try {			
+			userActual.setNombre(user.getNombre());
+			userActual.setApellidoPaterno(user.getApellidoPaterno());
+			userActual.setApellidoMaterno(user.getApellidoMaterno());
+			userActual.setEmail(user.getEmail());
+			userActual.setPassword(user.getPassword());
+			userUpdated = userService.save(userActual);
+		} catch(DataAccessException e) {
+			response.put("mensaje", "Error al actualizar el usuario en la base de datos.");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		response.put("mensaje", "El usuario ha sido actualizado con éxito!.");
+		response.put("usuario", userUpdated);
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 		
 	}
 	
 	@DeleteMapping("/users/{id}")
-	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable Long id) {
-		userService.delete(id);
+	public ResponseEntity<?> delete(@PathVariable Long id) {
+		Map<String, Object> response = new HashMap<>();
+		try {
+			userService.delete(id);
+		} catch(DataAccessException e) {
+			response.put("mensaje", "Error al eliminar el cliente en la base de datos.");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		} 
+		response.put("mensaje", "El cliente ha sido eliminado con éxito!.");
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 	}
 }
