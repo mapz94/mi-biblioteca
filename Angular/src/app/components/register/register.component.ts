@@ -43,11 +43,15 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser(): void {
-    this.userService.create(this.user).subscribe(
-      response => {
-        this.router.navigate(['/login']);
-        Swal.fire({position: 'top', title: 'Registro',
-                   text: `Tu usuario: "${this.user.nombre}" ha sido creado con exito!`, type: 'success'});
-      });
+    if (this.termins) {
+      this.userService.create(this.user).subscribe(
+        response => {
+          this.router.navigate(['/login']);
+          Swal.fire({position: 'top', title: 'Registro',
+                     text: `Tu usuario: "${this.user.nombre}" ha sido creado con exito!`, type: 'success'});
+        });
+    } else {
+      this.terminsError = true;
+    }
   }
 }

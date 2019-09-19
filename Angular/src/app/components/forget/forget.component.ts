@@ -8,17 +8,17 @@ import { DarkModeService } from 'src/app/services/dark-mode.service';
 })
 export class ForgetComponent implements OnInit {
 
-  errorInput:boolean = false;
+  errorInput = false;
 
-  constructor(private dark:DarkModeService) { }
+  constructor(private dark: DarkModeService) { }
 
-  darkMode:boolean;
-  
+  darkMode: boolean;
+
   ngOnInit() {
     this.dark.darkMode.subscribe(dark => this.darkMode = dark);
   }
 
-  recuperaPass(){
+  recuperaPass() {
     this.errorInput = !this.errorInput;
 
   }
