@@ -9,15 +9,11 @@
 
     <div class="collapse navbar-collapse" [ngClass]="{'z-depth-0':innerWidth < 1000}" id="navbarSupportedContent-333">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link waves-effect" routerLink="/home">
-          Inicio
-        </a>
+            <li class="nav-item" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link waves-effect" routerLink="/home">Inicio</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link waves-effect" routerLink="/about">
-          Preguntas Frecuentes
-        </a>
+            <li class="nav-item" routerLinkActive="active-link">
+                <a class="nav-link waves-effect" routerLink="/about">Preguntas Frecuentes</a>
             </li>
         </ul>
         <ul class="navbar-nav nav-flex-icons">

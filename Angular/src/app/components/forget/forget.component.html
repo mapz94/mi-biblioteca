@@ -3,7 +3,7 @@
     <p class="h4 my-3 text-center animated faster fadeIn" [ngClass]="{'text-white': darkMode, 'text-muted': !darkMode}">Recuperar contraseña</p>
     <div class="card mx-2 mb-4 z-depth-0 animated faster fadeInUp" [ngClass]="{'elegant-color': darkMode,'bg-white':!darkMode}">
         <!-- Card content -->
-        <div class="card-body z-depth-0 text-center"[ngClass]="{'elegant-color': darkMode,'bg-white':!darkMode}">
+        <div class="card-body z-depth-0 text-center" [ngClass]="{'elegant-color': darkMode,'bg-white':!darkMode}">
             <div class="alert alert-info mx-3 my-3">Para recuperar su contraseña, llene los campos solicitados y luego pulse enviar.
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -12,14 +12,12 @@
             <div class="m-3">
                 <div class="md-form text-left">
                     <i class="fas fa-mail-bulk prefix color-ico"></i>
-                    <input type="text" id="LoginFormUser" class="form-control mb-4" [(ngModel)]="email"
-                        (keyup.enter)="recuperaPass()">
+                    <input type="text" id="LoginFormUser" class="form-control mb-4" [(ngModel)]="email" (keyup.enter)="recuperaPass()">
                     <label for="inputUser" [ngClass]="{'text-white': darkMode}">E-mail registrado</label>
                 </div>
                 <div class="md-form text-left">
                     <i class="fas fa-user prefix color-ico"></i>
-                    <input type="password" id="LoginFormPassword" class="form-control" [(ngModel)]="username"
-                        (keyup.enter)="recuperaPass()">
+                    <input type="password" id="LoginFormPassword" class="form-control" [(ngModel)]="username" (keyup.enter)="recuperaPass()">
                     <label for="inputPass" [ngClass]="{'text-white': darkMode}">Usuario registrado</label>
                 </div>
             </div>
@@ -31,11 +29,10 @@
                 </button>
             </div>
             <!-- Back button-->
-            <a routerLink="/login" class="btn btn-danger m-2 waves-effect waves-light text-capitalize rounded-pill"><i
+            <a routerLink="/login" class="btn btn-danger m-2 z-depth-0 rounded-pill"><i
                     class="fas fa-arrow-circle-left text-white"></i> Volver al inicio</a>
             <!-- Register button -->
-            <button class="btn btn-success waves-effect waves-light text-capitalize rounded-pill m-2" type="submit"
-                (click)="recuperaPass()">Recuperar contraseña</button>
+            <button class="btn btn-success z-depth-0 rounded-pill m-2" type="submit" (click)="recuperaPass()">Recuperar contraseña</button>
         </div>
 
 

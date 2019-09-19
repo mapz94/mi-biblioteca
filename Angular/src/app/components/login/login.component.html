@@ -1,56 +1,100 @@
-<i class="h1 fas fa-book-reader mx-4 mt-4 animated faster fadeIn" [ngClass]="{'text-white': darkMode, 'text-muted': !darkMode}"></i>
 <div class="container animated faster fadeIn" [ngClass]="{'elegant-color': darkMode}">
-    <div class="custom-control custom-switch text-right">
-        <input type="checkbox" class="custom-control-input" id="customSwitches" [(ngModel)]="checkMode" (change)="checkDarkMode(checkMode)">
-        <label [ngClass]="{'text-white': darkMode}" class="custom-control-label" for="customSwitches">{{ darkMode==true? 'Tema oscuro':'Tema luminoso' }}</label>
+    <div class="row my-5 align-content-between">
+        <div class="col-sm-6">
+            <i class="h1 fas fa-book-reader animated faster fadeIn" [ngClass]="{'text-white': darkMode, 'text-muted': !darkMode}"></i>
+        </div>
+        <div class="col-sm-6">
+            <div class="custom-control custom-switch text-right">
+                <input type="checkbox" class="custom-control-input" id="DarkmodeSwitch" [(ngModel)]="checkMode" (change)="checkDarkMode(checkMode)">
+                <label [ngClass]="{'text-white': darkMode}" class="custom-control-label" for="DarkmodeSwitch">{{ darkMode==true? 'Tema oscuro':'Tema luminoso' }}</label>
+            </div>
+        </div>
     </div>
-    <br><br>
-    <p class="h4 mb-1 text-center" [ngClass]="{'text-white': darkMode, 'text-muted': !darkMode}">Bienvenido a <b>Mi Biblioteca</b> en linea</p>
-    <div class="card mx-2 mb-4 z-depth-0" [ngClass]="{'elegant-color': darkMode,'bg-white':!darkMode}">
-        <!-- Card content -->
-        <div class="card-body z-depth-0 text-center animated faster fadeInUp" [ngClass]="{'elegant-color': darkMode,'bg-white':!darkMode}">
-            <p class="h6 my-5 text-center" [ngClass]="{'text-white': darkMode}">Inicio de sesión</p>
-            <div class="mx-1">
-                <div class="md-form text-left">
-                    <i class="fas fa-user prefix color-ico"></i>
-                    <input type="text" id="LoginFormUser" class="form-control mb-4" [(ngModel)]="username" (keyup.enter)="validarLogin()">
-                    <label for="inputUser" [ngClass]="{'text-white': darkMode}">Usuario</label>
+    <div class="row">
+        <div class="col">
+            <p class="h4 mb-5 text-center" [ngClass]="{'text-white': darkMode, 'text-muted': !darkMode}">Iniciar sesión en <b>Mi Biblioteca</b> en linea</p>
+            <form class="container my-2">
+                <div class="md-form">
+                    <i class="fas fa-user prefix"></i>
+                    <input type="text" name="username" placeholder="Usuario" class="form-control" [(ngModel)]="username" (keyup.enter)="validarLogin()">
                 </div>
-                <div class="md-form text-left">
-                    <i class="fas fa-key prefix color-ico"></i>
-                    <input type="password" id="LoginFormPassword" class="form-control" [(ngModel)]="password" (keyup.enter)="validarLogin()">
-                    <label for="inputPass" [ngClass]="{'text-white': darkMode}">Contraseña</label>
+                <div class="md-form">
+                    <i class="fas fa-key prefix"></i>
+                    <input type="password" name="password" placeholder="Contraseña" class="form-control" [(ngModel)]="password" (keyup.enter)="validarLogin()">
+                </div>
+                <div class="d-flex justify-content-center mb-4">
+                    <div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember" name="remeber" [(ngModel)]="check" (change)="checkCheckBoxvalue(check)">
+                            <label class="custom-control-label" [ngClass]="{ 'text-white': darkMode}" for="defaultLoginFormRemember">Mantener sesión
+                                    iniciada</label>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="errorLogin" class=" text-center alert alert-danger mx-3 mt-2 animated faster fadeInLeftBig h6-responsive">
+                    Usuario o contraseña ingresado no es valido, por favor verifique sus datos de acceso e intente nuevamente.
+                    <button type="button " class="close " data-dismiss="alert " aria-label="Close " (click)="errorLogin=! errorLogin ">
+                            <span aria-hidden="true ">&times;</span>
+                        </button>
+                </div>
+                <p class="my-3 text-center">
+                    <a routerLink="/register" [ngClass]="{ 'text-white': darkMode, 'text-muted': !darkMode} ">¿No estas registrado?, <b>Registrate aquí</b></a>
+
+                </p>
+                <p class="my-3 text-center">
+                    <a routerLink="/forget" [ngClass]="{ 'text-white': darkMode, 'text-muted': !darkMode} ">¿Olvidaste tu contraseña?</a>
+                </p>
+                <button [ngClass]="{ 'btn-success':!errorLogin, 'btn-danger':errorLogin }" class="btn btn-block mt-5 rounded-pill h2 z-depth-0" type="submit" (click)="validarLogin()">Ingresar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<!--<div class="card mx-2 mb-4 z-depth-0 " [ngClass]="{ 'elegant-color': darkMode, 'bg-white':!darkMode} ">
+        <div class="card-body z-depth-0 text-center animated faster fadeInUp " [ngClass]="{ 'elegant-color': darkMode, 'bg-white':!darkMode} ">
+            <p class="h6 my-5 text-center " [ngClass]="{ 'text-white': darkMode} ">Inicio de sesión</p>
+            <div class="mx-1 ">
+                <div class="md-form text-left ">
+                    <i class="fas fa-user prefix color-ico "></i>
+                    <input type="text " id="LoginFormUser " class="form-control mb-4 " [(ngModel)]="username " (keyup.enter)="validarLogin() ">
+                    <label for="inputUser " [ngClass]="{ 'text-white': darkMode} ">Usuario</label>
+                </div>
+                <div class="md-form text-left ">
+                    <i class="fas fa-key prefix color-ico "></i>
+                    <input type="password " id="LoginFormPassword " class="form-control " [(ngModel)]="password " (keyup.enter)="validarLogin() ">
+                    <label for="inputPass " [ngClass]="{ 'text-white': darkMode} ">Contraseña</label>
                 </div>
             </div>
-            <div class="d-flex justify-content-center my-4">
+            <div class="d-flex justify-content-center my-4 ">
                 <div>
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember" [(ngModel)]="check" (change)="checkCheckBoxvalue(check)">
-                        <label class="custom-control-label" [ngClass]="{'text-white': darkMode}" for="defaultLoginFormRemember">Mantener sesión
+                    <div class="custom-control custom-checkbox ">
+                        <input type="checkbox " class="custom-control-input " id="defaultLoginFormRemember " [(ngModel)]="check " (change)="checkCheckBoxvalue(check) ">
+                        <label class="custom-control-label " [ngClass]="{ 'text-white': darkMode} " for="defaultLoginFormRemember ">Mantener sesión
                             iniciada</label>
                     </div>
                 </div>
             </div>
-            <!-- Usuario -->
-            <div *ngIf="errorLogin" class="alert alert-danger mx-3 my-3 animated faster fadeIn z-depth-0">
+            <div *ngIf="errorLogin " class="alert alert-danger mx-3 my-3 animated faster fadeIn z-depth-0 ">
                 Usuario o contraseña ingresada no es valida, favor verifique sus datos de acceso.
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="errorLogin = !errorLogin">
-                    <span aria-hidden="true">&times;</span>
+                <button type="button " class="close " data-dismiss="alert " aria-label="Close " (click)="errorLogin=! errorLogin ">
+                    <span aria-hidden="true ">&times;</span>
                 </button>
             </div>
-            <!-- Register -->
-            <p class="my-2 mt-5 animated faster fadeIn">
-                <a routerLink="/register" [ngClass]="{'text-white': darkMode, 'text-muted': !darkMode}">¿No estas registrado?, <b>Registrate aquí</b></a>
-                <!-- Forgot password -->
+            <p class="my-2 mt-5 animated faster fadeIn ">
+                <a routerLink="/register " [ngClass]="{ 'text-white': darkMode, 'text-muted': !darkMode} ">¿No estas registrado?, <b>Registrate aquí</b></a>
+            
             </p>
-            <p class="my-2 mb-5 animated faster fadeIn">
-                <a routerLink="/forget" [ngClass]="{'text-white': darkMode, 'text-muted': !darkMode}">¿Olvidaste tu contraseña?</a>
+            <p class="my-2 mb-5 animated faster fadeIn ">
+                <a routerLink="/forget " [ngClass]="{ 'text-white': darkMode, 'text-muted': !darkMode} ">¿Olvidaste tu contraseña?</a>
             </p>
-            <!-- Sign in button -->
-            <button [ngClass]="{
-                        'btn-success':!errorLogin,
-                        'btn-danger':errorLogin
-                    }" class="btn btn-block waves-effect waves-light my-4 text-capitalize rounded-pill z-depth-1 h5" type="submit" (click)="validarLogin()">Ingresar</button>
+            <button [ngClass]="{ 'btn-success':!errorLogin, 'btn-danger':errorLogin } " class="btn btn-block waves-effect waves-light my-4 text-capitalize rounded-pill z-depth-1 h5 " type="submit " (click)="validarLogin() ">Ingresar</button>
         </div>
-    </div>
-</div>
+    </div>-->

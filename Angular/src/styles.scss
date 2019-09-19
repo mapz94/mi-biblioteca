@@ -1,20 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
-html, body{
-  font-family: 'Segoe UI', sans-serif;
-  overflow-x: hidden;
+
+html,
+body {
+    font-family: 'Segoe UI', sans-serif !important;
+    overflow-x: hidden;
 }
 
-::-webkit-scrollbar {
-  display: none;
- }
+.active-link .nav-link {
+    color: teal !important;
+    background-color: rgba(0, 0, 0, .1);
+    transition: all .5 ease-in-out;
+}
+
+.nav-link:hover {
+    color: teal !important;
+    background-color: rgba(0, 0, 0, .1);
+}
+
+.nav-link {
+    border-radius: 15px;
+    margin-left: 5px;
+    padding: 5px;
+}
 
 .btn-return {
-  background-color: #6FE06F !important;
-  border-color: #6FE06F !important;
+    background-color: #6FE06F !important;
+    border-color: #6FE06F !important;
 }
 
 .btn-return-red {
-  background-color: rgb(158, 67, 55) !important;
-  border-color: rgb(158, 67, 55) !important;
+    background-color: rgb(158, 67, 55) !important;
+    border-color: rgb(158, 67, 55) !important;
 }
-

@@ -1,8 +1,4 @@
-html, body, .container {
-    background-color: transparent !important;
-}
-
-input[type=text]:focus:not([readonly]) + label,input[type=password]:focus:not([readonly]) + label, .color-ico{
+/*input[type=text]:focus:not([readonly]) + label,input[type=password]:focus:not([readonly]) + label, .color-ico{
     color: #009688 !important; 
 }
 
@@ -15,4 +11,27 @@ input[type=text]:focus:not([readonly]) + label,input[type=password]:focus:not([r
 
     box-shadow: 0 1px 0 0#009688 !important;
     border-bottom: 1px solid #009688 !important;
-    } 
+    } */
+
+.form-reduce {
+    width: 50% !important;
+}
+
+.md-form input:not(.browser-default):focus:not([readonly]) {
+    border-bottom: 1px solid teal;
+    box-shadow: none;
+    color: teal;
+}
+
+.md-form input:not(.browser-default) {
+    background-color: none;
+    transition: all .5 ease-in-out !important;
+}
+
+.fas {
+    color: teal;
+}
+
+.md-form .prefix.active {
+    color: teal;
+}
