@@ -52,18 +52,26 @@ export class LoginComponent implements OnInit {
   }
 
   validateAdmin(): boolean {
-    if (this.username === 'admin' && this.password === 'admin') {
+    if (this.username === 'debuguser' && this.password === 'debuguser') {
       if (this.remember) {
-        this.userLog.userID = '0';
-        this.userLog.userLog = 'Admin';
+        this.userLog.rememberUser('Admin', '0');
       }
+      this.userLog.userID = '0';
+      this.userLog.userLog = 'Admin';
       this.router.navigate(['/home']);
+      Swal.fire({position: 'center', title: `Bienvenido usuario Debug!`,
+                   text: 'Cargando...',
+                   timer: 1000,
+                  onBeforeOpen: () => {
+                    Swal.showLoading(); },
+                  onClose: () => {} });
     } else {
       return true;
     }
   }
 
   validarLogin() {
+    this.validateAdmin();
     if (this.validateAdmin) {
       // tslint:disable-next-line: prefer-const
       for (let i of this.users) {
