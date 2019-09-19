@@ -29,11 +29,11 @@ export class AppComponent {
   }
 
   loadUser(): void {
-    if (localStorage.getItem('usuario_activo') != null && localStorage.getItem('id_activo')) {
+    if (localStorage.getItem('usuario_activo') != null && localStorage.getItem('id_activo') != null) {
       this.userLog.userLog = localStorage.getItem('usuario_activo');
       this.userLog.userID = localStorage.getItem('id_activo');
     }
-    if (this.userLog.userLog === '') {
+    if (this.userLog.userLog === null) {
       this.router.navigate(['/login']);
     }
   }

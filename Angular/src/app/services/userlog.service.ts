@@ -9,14 +9,14 @@ export class UserlogService {
 
   constructor() { }
 
-  rememberUser(user:string, id:string) {
+  rememberUser(user: string, id: string) {
     this.userLog = user;
     this.userID = id;
-    localStorage.setItem("usuario_activo",this.userLog);
-    localStorage.setItem("id_activo", this.userID);
+    localStorage.setItem('usuario_activo', this.userLog);
+    localStorage.setItem('id_activo', this.userID);
   }
 
-  forgetUser(){
+  forgetUser() {
     this.userLog = null;
     this.userID = null;
     localStorage.removeItem('usuario_activo');
