@@ -1,47 +1,44 @@
-<app-navbar></app-navbar>
-<div class="view mt-5 animated faster fadeInUp">
-    <img src="../../assets/img/background-biblio.jpg" class="img-fluid" alt="placeholder">
-    <div class="mask waves-effect waves-light rgba-teal-strong align-items-center">
-        <div class="container">
-            <div class="row">
-                <div class="col text-md-center mt-xl-5 mb-5 wow fadeInLeft">
-                    <p class="text-left white-text h3-responsive">Bienvenido <b>{{ username }}</b> a Mi biblioteca</p>
-                    <p class="text-left white-text h6-responsive">En esta plataforma podrás revisar nuestro catalogo y los materiales bibliográficos que has solicitados.</p>
-                </div>
-            </div>
+<div class="container-12 mt-5 p-5 animated faster fadeInLeftBig">
+    <div class="row">
+        <div class="col-sm-5 ml-auto" [ngClass]="{'order-2':innerWidth < 1000}">
+            <p class="h2-responsive text-left teal-text">Bienvenido <b>{{ user.nombre }}</b> a Mi biblioteca</p>
+            <p class="h6-responsive text-left teal-text">En esta plataforma podrás revisar nuestro catalogo y los materiales bibliográficos que has solicitados.</p>
+        </div>
+        <div class="col-sm-5 mx-auto" [ngClass]="{'order-1':innerWidth < 1000}">
+            <img src="../../assets/img/library.png" class="img-fluid head-img" alt="placeholder">
         </div>
     </div>
 </div>
-<div class="container-fluid animated faster fadeInUp">
+<div class="container-fluid animated faster fadeInLeftBig">
     <div class="row py-5">
         <div class="col">
             <div [ngClass]="{'elegant-color': darkMode }" class="card z-depth-0">
-                <p class="text-center teal-text h4">Servicios disponibles</p>
+                <p class="text-center teal-text h4">Servicios disponibles en nuestra biblioteca</p>
             </div>
         </div>
     </div>
-    <div class="row py-5 justify-content-between z-depth-1" [ngClass]="{'teal darken-3':darkMode, 'grey lighten-3':!darkMode}">
-        <div class="col-sm-5 m-1" [ngClass]="{'mb-5':innerWidth < 1000}">
-            <img class="z-depth-1 rounded-bottom card-img" src="../../assets/img/libros_prestados.jpg" alt="Card image cap">
+    <div class="row py-5" [ngClass]="{'teal darken-3':darkMode, 'grey lighten-3':!darkMode}">
+        <div class="col-sm-5 ml-auto" [ngClass]="{'mb-5':innerWidth < 1000}">
+            <img class="card-img" src="../../assets/img/libros_prestados.png" alt="Card image cap">
         </div>
-        <div class="col-sm-5 mx-5">
-            <h6 class="text-center h3-responsive mb-5" [ngClass]="{'text-white':darkMode, 'teal-text':!darkMode}">
+        <div class="col-sm-5 p-5 mr-auto">
+            <h6 class="text-left h2-responsive" [ngClass]="{'text-white':darkMode, 'teal-text':!darkMode}">
                 Prestamos vigentes</h6>
-            <p class="card-text mb-5" [ngClass]="{'text-white':darkMode, 'teal-text':!darkMode}">¿Tienes algún prestamo vigente y quieres conocer cuando debes devolverlo?, aqui puedes obtener esa información y mucho más.</p>
-            <a routerLink="/prestamos" class="btn btn-block btn-green text-white waves-effect waves-light rounded-pill mt-5">ir a mis
+            <p class="card-text" [ngClass]="{'text-white':darkMode, 'teal-text':!darkMode}">¿Tienes algún prestamo vigente y quieres conocer cuando debes devolverlo?, aqui puedes obtener esa información y mucho más.</p>
+            <a routerLink="/prestamos" class="btn btn-block btn-green text-white rounded-pill mt-5 z-depth-0">ir a mis
         prestamos</a>
         </div>
     </div>
-    <div class="row py-5 justify-content-between z-depth-1" [ngClass]="{'teal darken-4':darkMode, 'grey lighten-2':!darkMode}">
+    <div class="row py-5" [ngClass]="{'teal darken-4':darkMode, 'grey lighten-2':!darkMode}">
 
-        <div class="col-sm-5 mx-5" [ngClass]="{'order-2':innerWidth < 1000}">
-            <h6 class="text-center h3-responsive mb-5" [ngClass]="{'text-white':darkMode, 'teal-text':!darkMode}">
+        <div class="col-sm-5 p-5 ml-auto" [ngClass]="{'order-2':innerWidth < 1000}">
+            <h6 class="text-left h2-responsive" [ngClass]="{'text-white':darkMode, 'teal-text':!darkMode}">
                 Consultar material bibliográfico</h6>
-            <p class="card-text mb-5" [ngClass]="{'text-white':darkMode, 'teal-text':!darkMode}">Aqui puedes consultar nuestros materiales bibliográficos disponibles y si te interesa, solicitar un prestamo.</p>
-            <a routerLink="/search" class="btn btn-block btn-green text-white waves-effect waves-light rounded-pill mt-5">Ir al buscador</a>
+            <p class="card-text" [ngClass]="{'text-white':darkMode, 'teal-text':!darkMode}">Aqui puedes consultar nuestros materiales bibliográficos disponibles y si te interesa, solicitar un prestamo.</p>
+            <a routerLink="/search" class="btn btn-block btn-green text-white rounded-pill mt-5 z-depth-0">Ir al buscador</a>
         </div>
-        <div class="col-sm-5 m-2" [ngClass]="{'order-1 mb-5':innerWidth < 1000}">
-            <img class="z-depth-1 rounded-bottom card-img" src="../../../assets/img/busqueda_libros.jpg" alt="Card image cap">
+        <div class="col-sm-5 mr-auto" [ngClass]="{'order-1 mb-5':innerWidth < 1000}">
+            <img class="card-img" src="../../../assets/img/busqueda_libros.png" alt="Card image cap">
         </div>
     </div>
 </div>

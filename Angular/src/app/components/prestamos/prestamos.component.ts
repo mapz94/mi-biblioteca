@@ -8,12 +8,13 @@ import { DarkModeService } from 'src/app/services/dark-mode.service';
 })
 export class PrestamosComponent implements OnInit {
 
-  darkMode:boolean;
+  darkMode: boolean;
 
   constructor(private dark: DarkModeService) { }
 
   ngOnInit() {
     this.dark.darkMode.subscribe( dark => this.darkMode = dark);
+    window.scrollTo({top: 0, behavior: 'smooth'});
   }
 
 }

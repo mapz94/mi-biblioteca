@@ -28,7 +28,7 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     this.dark.darkMode.subscribe(dark => this.darkMode = dark);
     this.mBibliograficoService.getMbiblios().subscribe(val => this.materialBibliografico = val);
-    console.log(this.materialBibliografico);
+    window.scrollTo({top: 0, behavior: 'smooth'});
   }
 
 

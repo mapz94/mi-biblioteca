@@ -18,7 +18,7 @@ export class MbiblioComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => this.idBook = params.get('id'));
     this.mbiblio.getMBiblioById(this.idBook).subscribe(val => this.materialbiblio = val);
-    console.log(this.materialbiblio);
+    window.scrollTo({top: 0, behavior: 'smooth'});
   }
 
   solicitarMB() {

@@ -1,4 +1,4 @@
-<div class="card teal animated fadeIn">
+<div class="card teal animated faster fadeInRightBig">
     <div class="view overlay">
         <img [src]="materialbiblio.img" class="card-img-top z-depth-1" [alt]="materialbiblio.titulo">
         <a>
@@ -13,7 +13,7 @@
                 <b>Categoria:</b> {{materialbiblio.categoria}}<br>
                 <b>Publicado con fecha:</b> {{materialbiblio.fechaPublicacion}}
             </small></p>
-        <button (click)="verMaterial(i)" type="button" class="btn btn-white btn-block rounded-pill z-depth-1 h5">
+        <button (click)="verMaterial(i)" type="button" class="btn btn-white btn-block rounded-pill z-depth-0 h5">
             Ver más
         </button>
     </div>

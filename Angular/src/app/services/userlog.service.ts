@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserlogService {
-  userLog: string = '';
-  userID: string = '';
+  userLog: string = null;
+  userID: string = null;
 
   constructor() { }
 
@@ -17,8 +17,8 @@ export class UserlogService {
   }
 
   forgetUser(){
-    this.userLog = '';
-    this.userID = '';
+    this.userLog = null;
+    this.userID = null;
     localStorage.removeItem('usuario_activo');
     localStorage.removeItem('id_activo');
   }

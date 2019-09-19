@@ -8,13 +8,12 @@ body {
 
 .active-link .nav-link {
     color: teal !important;
-    background-color: rgba(0, 0, 0, .1);
     transition: all .5 ease-in-out;
 }
 
 .nav-link:hover {
-    color: teal !important;
-    background-color: rgba(0, 0, 0, .1);
+    color: white !important;
+    text-shadow: 0 0 6px teal;
 }
 
 .nav-link {

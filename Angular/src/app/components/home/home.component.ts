@@ -6,6 +6,7 @@ import { UserService } from 'src/app/services/user.service';
 import { DarkModeService } from 'src/app/services/dark-mode.service';
 import { Subscription } from 'rxjs';
 import { delay } from 'q';
+import { User } from 'src/app/class/User';
 
 @Component({
   selector: 'app-home',
@@ -16,21 +17,20 @@ import { delay } from 'q';
 export class HomeComponent implements OnInit {
 
   private subs: Subscription;
-  lPrestados = false;
-  lSolicita = false;
-  username = '';
+  user: User = new User();
   darkMode: boolean;
   collapseOne: boolean;
   collapseTwo: boolean;
   innerWidth: number;
 
-  constructor(private userLog: UserlogService, private router: Router, private dark: DarkModeService) {
+  constructor(private userLog: UserlogService, private router: Router, private dark: DarkModeService, private userService: UserService) {
 
   }
 
   ngOnInit() {
 
     this.dark.darkMode.subscribe(dark => this.darkMode = dark);
+    this.userService.getUserById(this.userLog.userID).subscribe(val => this.user = val);
     this.innerWidth = window.innerWidth;
 
     if (localStorage.getItem('usuario_activo') != null && localStorage.getItem('id_activo') != null) {
@@ -40,7 +40,6 @@ export class HomeComponent implements OnInit {
     if (this.userLog.userLog === '') {
       this.router.navigate(['/login']);
     }
-    this.username = this.userLog.userLog.toLowerCase();
   }
 
   @HostListener('window:resize', ['$event'])
