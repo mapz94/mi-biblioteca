@@ -23,6 +23,9 @@ export class UserService {
   }
 
   getUserById(id: string): Observable<any> {
+    if (id === '0') {
+      return;
+    }
     return this.http.get<any>(`${this.urlUsers}/${id}`).pipe(
       catchError( e => {
         console.error(e.error.mensaje);

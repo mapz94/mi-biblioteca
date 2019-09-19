@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col">
             <p class="h4 mb-5 text-center" [ngClass]="{'text-white': darkMode, 'text-muted': !darkMode}">Iniciar sesión en <b>Mi Biblioteca</b> en linea</p>
-            <form class="container my-2">
+            <form (ngSubmit)="validarLogin()" class="container my-2">
                 <div class="md-form">
                     <i class="fas fa-user prefix"></i>
                     <input type="text" name="username" placeholder="Usuario" class="form-control" [(ngModel)]="username" (keyup.enter)="validarLogin()">
@@ -44,8 +44,8 @@
                 <p class="my-3 text-center">
                     <a routerLink="/forget" [ngClass]="{ 'text-white': darkMode, 'text-muted': !darkMode} ">¿Olvidaste tu contraseña?</a>
                 </p>
-                <button [ngClass]="{ 'btn-success':!errorLogin, 'btn-danger':errorLogin }" class="btn btn-block mt-5 rounded-pill h2 z-depth-0" type="submit" (click)="validarLogin()">Ingresar</button>
             </form>
+            <button [ngClass]="{ 'btn-success':!errorLogin, 'btn-danger':errorLogin }" class="btn btn-block mt-5 rounded-pill h2 z-depth-0" (click)="validarLogin()">Ingresar</button>
         </div>
     </div>
 </div>
