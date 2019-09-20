@@ -1,0 +1,88 @@
+<div class="container animated faster fadeInUp py-5" [ngClass]="{'text-white': darkMode}">
+    <div class="row">
+        <div class="col-sm">
+            <!-- Button -->
+
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-sm">
+            <div class="alert alert-warning m-2 z-depth-0">
+                <u><b>Aviso</b></u>
+                <br>Para hacer efectiva la modificación de sus datos, debe pulsar el botón 'actualizar datos'.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="errorInput = !errorInput">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <form class="my-4 mx-2">
+        <div class="card z-depth-1 text-white pb-5 z-depth-1 teal darken-2">
+            <div class="form-group row mb-5">
+                <div class="col-sm">
+                    <div class="card-tittle z-depth-0 teal darken-1 p-3">
+                        <h3 class="text-center"><b>Datos de usuario</b></h3>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row m-3">
+                <div class="col-sm">
+                    Nombre de usuario:
+                </div>
+                <div class="col-sm">
+                    <input type="text" class="form-control disabled border-info" [(ngModel)]="user.username" name="username">
+                </div>
+            </div>
+            <div class="form-group row m-3">
+                <div class="col-sm">
+                    Rol único nacional (RUN)
+                </div>
+                <div class="col-sm">
+                    <input type="text" class="form-control disabled border-info" [(ngModel)]="user.rut" name="rut" formatRut>
+                </div>
+            </div>
+            <div class="form-group row m-3">
+                <div class="col-sm">
+                    Nombre
+                </div>
+                <div class="col-sm">
+                    <input type="text" class="form-control border-info" [(ngModel)]="user.nombre" name="nombre">
+                </div>
+            </div>
+            <div class="form-group row m-3">
+                <div class="col-sm">
+                    Apellido Paterno
+                </div>
+                <div class="col-sm">
+                    <input type="text" class="form-control border-info" [(ngModel)]="user.apellidoPaterno" name="apellidoPaterno">
+                </div>
+            </div>
+            <div class="form-group row m-3">
+                <div class="col-sm">
+                    Apellido Materno
+                </div>
+                <div class="col-sm">
+                    <input type="text" class="form-control border-info" [(ngModel)]="user.apellidoMaterno" name="apellidoMaterno">
+                </div>
+            </div>
+            <div class="form-group row m-3">
+                <div class="col-sm">
+                    Correo electrónico
+                </div>
+                <div class="col-sm">
+                    <input type="text" class="form-control border-info" [(ngModel)]="user.email" name="email">
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="form-group row my-5 text-center">
+            <div class="col-sm-6 my-2">
+                <button [routerLink]="['/home']" class="btn z-depth-0 btn-block btn-return-red waves-effect waves-light text-capitalize rounded-pill text-white"><i
+                        class="fas fa-arrow-circle-left text-white"></i> Volver al inicio</button>
+            </div>
+            <div class="col-sm-6 my-2">
+                <button (click)="updateUser()" class="btn z-depth-0 btn-block btn-success waves-effect waves-light text-capitalize rounded-pill text-white">Actualizar datos</button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    font-family: 'Segoe UI', sans-serif !important;
+    overflow-x: hidden;
+}
+
+.active-link .nav-link {
+    color: teal !important;
+    transition: all .5 ease-in-out;
+}
+
+.nav-link:hover {
+    color: white !important;
+    text-shadow: 0 0 6px teal;
+}
+
+.nav-link {
+    border-radius: 15px;
+    margin-left: 5px;
+    padding: 5px;
+}
+
+.btn-return {
+    background-color: #6FE06F !important;
+    border-color: #6FE06F !important;
+}
+
+.btn-return-red {
+    background-color: rgb(158, 67, 55) !important;
+    border-color: rgb(158, 67, 55) !important;
+}

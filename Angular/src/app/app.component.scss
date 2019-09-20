@@ -1,0 +1,13 @@
+.btn-circle {
+    position: fixed;
+    bottom: 5%;
+    right: -50%;
+    height: 55px;
+    width: 55px;
+    z-index: 999;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    color: whitesmoke;
+    transition: .5s;
+}
