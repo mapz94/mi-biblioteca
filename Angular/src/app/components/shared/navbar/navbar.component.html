@@ -20,7 +20,8 @@
         <ul class="navbar-nav nav-flex-icons align-content-between">
             <li class="nav-item dropdown">
                 <a class="nav-link" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img *ngIf="userData.imgAvatar != null" [src]="userData.imgAvatar" class="rounded-circle img-navbar">
+                    <img *ngIf="userData.imgAvatar" src="http://localhost:8080/biblio/uploads/img/{{userData.imgAvatar}}" class="rounded-circle img-navbar">
+                    <img *ngIf="!userData.imgAvatar" src="http://localhost:8080/images/no-user.png" class="rounded-circle img-navbar">
                 </a>
                 <div [ngClass]="{
                             'dropdown-menu-right' : innerWidth >= 1000,

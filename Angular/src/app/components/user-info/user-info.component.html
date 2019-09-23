@@ -16,15 +16,40 @@
             </div>
         </div>
     </div>
-    <form class="my-4 mx-2">
+    <form *ngIf="user" class="my-4 mx-2">
         <div class="card z-depth-1 text-white pb-5 z-depth-1 teal darken-2">
             <div class="form-group row mb-5">
                 <div class="col-sm">
                     <div class="card-tittle z-depth-0 teal darken-1 p-3">
-                        <h3 class="text-center"><b>Datos de usuario</b></h3>
+                        <h3 class="text-center h4-responsive">Datos del usuario: <b>{{user.username}}</b></h3>
                     </div>
                 </div>
             </div>
+            <div class="form-group row m-3">
+                <div class="col-sm">
+                    <label class="text-center">Foto de perfil</label><br>
+                    <img *ngIf="user?.imgAvatar" src="http://localhost:8080/biblio/uploads/img/{{user.imgAvatar}}" class="img-size img-thumbnail">
+                    <img *ngIf="!user?.imgAvatar" src="http://localhost:8080/images/no-user.png" class="img-size img-thumbnail">
+                    <div *ngIf="progreso > 0" class="progress my-3">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" [ngStyle]="{width: progreso + '%'}" role="progressbar" attr.aria-valuenow="{{progreso}}" aria-valuemin="0" aria-valuemax="100">
+                            {{progreso}}%
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <p class="h5-responsive"><b>Modificar Foto de perfil</b></p>
+                    <div class="input-group">
+                        <div class="custom-file mt-2">
+                            <input (change)="seleccionarFoto($event)" type="file" class="custom-file-input rounded" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+                            <label class="custom-file-label" for="inputGroupFile04">{{ selImage }}</label>
+                        </div>
+                    </div>
+                    <div class="input-group-append">
+                        <button (click)="subirFoto()" [disabled]="!fotoSeleccionada" class="btn btn-success btn-block rounded-pill z-depth-0" type="button" id="inputGroupFileAddon04">Subir</button>
+                    </div>
+                </div>
+            </div>
+            <hr>
             <div class="form-group row m-3">
                 <div class="col-sm">
                     Nombre de usuario:

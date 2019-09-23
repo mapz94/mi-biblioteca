@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable, EventEmitter } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpEvent, HttpRequest } from '@angular/common/http';
 import { User } from '../class/User';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
@@ -13,8 +13,13 @@ export class UserService {
 
   private urlUsers = 'http://localhost:8080/biblio/users';
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
+  private NotificarUpload = new EventEmitter<any>();
 
   constructor(private http: HttpClient, private router: Router) { }
+
+  get notificarUpload(): EventEmitter<any> {
+    return this.NotificarUpload;
+  }
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.urlUsers).pipe(
@@ -65,6 +70,16 @@ export class UserService {
         return throwError(e);
       })
     );
+  }
+
+  subirFoto(archivo: File, id): Observable<HttpEvent<{}>> {
+    const formData = new FormData();
+    formData.append('archivo', archivo);
+    formData.append('id', id);
+    const req = new HttpRequest('POST', `${this.urlUsers}/upload/`, formData, {
+      reportProgress: true
+    });
+    return this.http.request(req);
   }
 }
 
