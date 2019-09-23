@@ -55,8 +55,7 @@ export class UserInfoComponent implements OnInit {
   seleccionarFoto(event) {
     this.fotoSeleccionada = event.target.files[0];
     this.progreso = 0;
-    console.log(this.fotoSeleccionada.type.indexOf('image'));
-    if (this.fotoSeleccionada.type.indexOf('image') < -1 ) {
+    if (this.fotoSeleccionada.type.indexOf('image') < 0 ) {
       Swal.fire({title: 'Error', text: `Debe seleccionar una imagen valida de formato por ejemplo: JPG, PNG.`, type: 'error'});
       return null;
     }
