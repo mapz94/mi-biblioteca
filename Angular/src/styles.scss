@@ -12,8 +12,7 @@ body {
 }
 
 .nav-link:hover {
-    color: white !important;
-    text-shadow: 0 0 6px teal;
+    color: teal !important;
 }
 
 .nav-link {
@@ -30,4 +29,8 @@ body {
 .btn-return-red {
     background-color: rgb(158, 67, 55) !important;
     border-color: rgb(158, 67, 55) !important;
+}
+
+.bg-transparent-dark {
+    background-color: rgba(0, 0, 0, .1);
 }

@@ -1,6 +1,24 @@
 .img-size {
     height: 300px;
-    width: 280px;
 }
 
 $custom-file-text: ( en: "Browse", es: "Elegir");
+input[type="file"] {
+    cursor: pointer;
+}
+
+.border-info {
+    border-color: transparent !important;
+    background-color: rgba(0, 0, 0, 0.1);
+    color: teal;
+}
+
+.custom-file-label {
+    border: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: teal;
+}
+
+.custom-file-label::after {
+    display: none;
+}

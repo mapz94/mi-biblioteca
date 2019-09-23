@@ -75,7 +75,6 @@ export class UserInfoComponent implements OnInit {
           this.userService.notificarUpload.emit(this.user);
           Swal.fire({title: 'Subir foto', text: `La foto ha sido subida con exito!`, type: 'success'});
           this.fotoSeleccionada = null;
-          this.progreso = 0;
         }
       });
     } else {

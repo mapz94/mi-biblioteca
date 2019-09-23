@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { UserlogService } from './services/userlog.service';
 import { Router } from '@angular/router';
 import { UserService } from './services/user.service';
@@ -9,7 +9,7 @@ import { DarkModeService } from './services/dark-mode.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Mi biblioteca';
   body = document.getElementsByTagName('body') as HTMLCollectionOf<HTMLElement>;
   darkMode: boolean;
@@ -39,7 +39,7 @@ export class AppComponent {
   }
 
   scrollUp() {
-    window.scrollTo({top: 0, behavior: 'smooth'});
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -51,6 +51,10 @@ export class AppComponent {
     } else {
       button[0].style.right = '-50%';
     }
+  }
 
+  @HostListener('contextmenu', ['$event'])
+  onRightClick(event) {
+    event.preventDefault();
   }
 }

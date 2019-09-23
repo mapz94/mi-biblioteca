@@ -34,7 +34,7 @@
             <li class="nav-item mt-3 ml-auto">
                 <div class="custom-control custom-switch">
                     <input type="checkbox" class="custom-control-input" id="customSwitches" [(ngModel)]="check" (change)="checkDarkMode(check)">
-                    <label [ngClass]="{'text-white': darkMode}" class="custom-control-label" for="customSwitches">{{ darkMode==true? 'Tema oscuro':'Tema luminoso' }}</label>
+                    <label [ngClass]="{'text-white': darkMode}" class="custom-control-label" for="customSwitches">{{ darkMode==true? 'Dark Theme':'Light Theme' }}</label>
                 </div>
             </li>
         </ul>

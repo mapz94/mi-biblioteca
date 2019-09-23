@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadUser();
     this.dark.darkMode.subscribe(dark => this.darkMode = dark);
     this.checkMode = this.darkMode;
     if (this.darkMode) {
@@ -91,6 +92,16 @@ export class LoginComponent implements OnInit {
         }
       }
       this.errorLogin = true;
+    }
+  }
+
+  loadUser(): void {
+    if (localStorage.getItem('usuario_activo') != null && localStorage.getItem('id_activo') != null) {
+      this.userLog.userLog = localStorage.getItem('usuario_activo');
+      this.userLog.userID = localStorage.getItem('id_activo');
+    }
+    if (this.userLog.userLog !== null) {
+      this.router.navigate(['/home']);
     }
   }
 }
