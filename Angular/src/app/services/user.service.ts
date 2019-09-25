@@ -34,7 +34,7 @@ export class UserService {
     return this.http.get<any>(`${this.urlUsers}/${id}`).pipe(
       catchError( e => {
         console.error(e.error.mensaje);
-        Swal.fire({title: 'Error al acceder al cliente', text: e.error.mensaje, type: 'error'});
+        Swal.fire({title: 'Error al acceder al cliente', text: e.error.mensaje, type: 'error', position: 'top-end'});
         this.router.navigate(['/home']);
         return throwError(e);
       })
@@ -46,7 +46,7 @@ export class UserService {
       map(response => response.user as User),
       catchError( e => {
         console.error(e.error.mensaje);
-        Swal.fire({title: e.error.mensaje, text: e.error.error, type: 'error'});
+        Swal.fire({title: e.error.mensaje, text: e.error.error, type: 'error', position: 'top-end'});
         return throwError(e);
       }));
   }
@@ -56,7 +56,7 @@ export class UserService {
       map(response => response.user as User),
       catchError( e => {
         console.error(e.error.mensaje);
-        Swal.fire({title: e.error.mensaje, text: e.error.error, type: 'error'});
+        Swal.fire({title: e.error.mensaje, text: e.error.error, type: 'error', position: 'top-end'});
         return throwError(e);
       })
     );
@@ -66,7 +66,7 @@ export class UserService {
     return this.http.delete<any>(`${this.urlUsers}/${id}`, {headers: this.httpHeaders}).pipe(
       catchError( e => {
         console.error(e.error.mensaje);
-        Swal.fire({title: e.error.mensaje, text: e.error.error, type: 'error'});
+        Swal.fire({title: e.error.mensaje, text: e.error.error, type: 'error', position: 'top-end'});
         return throwError(e);
       })
     );

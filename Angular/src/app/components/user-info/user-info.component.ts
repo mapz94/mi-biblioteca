@@ -46,7 +46,7 @@ export class UserInfoComponent implements OnInit {
     this.userService.update(this.user).subscribe(
       response => {
         this.router.navigate(['/home']);
-        Swal.fire({position: 'top', title: 'Datos de usuario',
+        Swal.fire({position: 'top-end', title: 'Datos de usuario',
                    text: `Tu usuario: "${this.user.nombre}" ha sido actualizado con exito!`, type: 'success'});
       }
     );
@@ -56,7 +56,8 @@ export class UserInfoComponent implements OnInit {
     this.fotoSeleccionada = event.target.files[0];
     this.progreso = 0;
     if (this.fotoSeleccionada.type.indexOf('image') < 0 ) {
-      Swal.fire({title: 'Error', text: `Debe seleccionar una imagen valida de formato por ejemplo: JPG, PNG.`, type: 'error'});
+      this.fotoSeleccionada = null;
+      Swal.fire({title: 'Error', text: `Debe seleccionar una imagen valida de formato por ejemplo: JPG, PNG.`, type: 'error', position: 'top-end'});
       return null;
     }
     this.selImage = this.fotoSeleccionada.name;
@@ -72,12 +73,13 @@ export class UserInfoComponent implements OnInit {
           const response: any = event.body;
           this.user = response.user as User;
           this.userService.notificarUpload.emit(this.user);
-          Swal.fire({title: 'Subir foto', text: `La foto ha sido subida con exito!`, type: 'success'});
+          Swal.fire({title: 'Subir foto', text: `La foto ha sido subida con exito!`, type: 'success', position: 'top-end'});
           this.fotoSeleccionada = null;
+          this.selImage = 'Elegir imagen';
         }
       });
     } else {
-      Swal.fire({title: 'Error', text: `Debe seleccionar la imagen que desea subir.`, type: 'error'});
+      Swal.fire({title: 'Error', text: `Debe seleccionar la imagen que desea subir.`, type: 'error', position: 'top-end'});
     }
   }
 
