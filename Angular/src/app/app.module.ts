@@ -17,7 +17,10 @@ import { PrestamosComponent } from './components/prestamos/prestamos.component';
 import { SearchComponent } from './components/search/search.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { MbiblioComponent } from './components/mbiblio/mbiblio.component';
+<<<<<<< HEAD:Angular/src/app/app.module.ts
 import { HttpClientModule } from '@angular/common/http';
+=======
+>>>>>>> f4cd18d27b70f8520b05f9030e1f10c728af9f13:src/app/app.module.ts
 
 @NgModule({
   declarations: [
