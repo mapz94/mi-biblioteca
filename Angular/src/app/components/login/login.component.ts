@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
       this.userLog.userID = '0';
       this.userLog.userLog = 'Admin';
       this.router.navigate(['/home']);
-      Swal.fire({position: 'center', title: `Bienvenido usuario Debug!`,
+      Swal.fire({position: 'top', title: `Bienvenido usuario Debug!`,
                    text: 'Cargando...',
                    timer: 1000,
                   onBeforeOpen: () => {
