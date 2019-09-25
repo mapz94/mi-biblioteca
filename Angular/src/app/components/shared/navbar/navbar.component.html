@@ -20,7 +20,8 @@
         <ul class="navbar-nav nav-flex-icons align-content-between">
             <li class="nav-item dropdown">
                 <a class="nav-link" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img *ngIf="userData.imgAvatar != null" [src]="userData.imgAvatar" class="rounded-circle img-navbar">
+                    <img *ngIf="userData.imgAvatar" src="http://localhost:8080/biblio/uploads/img/{{userData.imgAvatar}}" class="rounded-circle img-navbar">
+                    <img *ngIf="!userData.imgAvatar" src="http://localhost:8080/images/no-user.png" class="rounded-circle img-navbar">
                 </a>
                 <div [ngClass]="{
                             'dropdown-menu-right' : innerWidth >= 1000,
@@ -33,7 +34,7 @@
             <li class="nav-item mt-3 ml-auto">
                 <div class="custom-control custom-switch">
                     <input type="checkbox" class="custom-control-input" id="customSwitches" [(ngModel)]="check" (change)="checkDarkMode(check)">
-                    <label [ngClass]="{'text-white': darkMode}" class="custom-control-label" for="customSwitches">{{ darkMode==true? 'Tema oscuro':'Tema luminoso' }}</label>
+                    <label [ngClass]="{'text-white': darkMode}" class="custom-control-label" for="customSwitches">{{ darkMode==true? 'Dark Theme':'Light Theme' }}</label>
                 </div>
             </li>
         </ul>

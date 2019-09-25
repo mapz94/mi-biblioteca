@@ -7,6 +7,6 @@ export class User {
     email: string;
     password: string;
     rut: string;
-    imgAvatar = '../../../assets/img/Avatar/defaultAvatar.jpg';
+    imgAvatar: string;
     fechaNacimiento = new Date();
 }

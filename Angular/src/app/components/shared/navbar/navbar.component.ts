@@ -31,6 +31,9 @@ export class NavbarComponent implements OnInit {
       this.body[0].style.backgroundColor = '#fff';
     }
     this.userService.getUserById(this.userLog.userID).subscribe(user => this.userData = user);
+    this.userService.notificarUpload.subscribe(user => {
+      this.userData = user;
+    });
   }
 
   checkDarkMode(check: any) {

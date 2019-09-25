@@ -50,6 +50,7 @@ public class User implements Serializable {
 	@Column(name="img_avatar")
 	private String imgAvatar;
 
+	
 	public Long getId() {
 		return id;
 	}
