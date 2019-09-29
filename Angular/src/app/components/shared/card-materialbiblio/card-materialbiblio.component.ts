@@ -22,7 +22,11 @@ export class CardMaterialbiblioComponent implements OnInit {
 
   verMaterial() {
     this.mbSeleccionado.emit(this.index);
+<<<<<<< HEAD:Angular/src/app/components/shared/card-materialbiblio/card-materialbiblio.component.ts
     this.router.navigate([`/search/${this.index}`]);
+=======
+    this.router.navigate(['/search/'+this.index]);
+>>>>>>> f4cd18d27b70f8520b05f9030e1f10c728af9f13:src/app/components/shared/card-materialbiblio/card-materialbiblio.component.ts
   }
 
 }
