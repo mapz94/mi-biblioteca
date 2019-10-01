@@ -1,0 +1,146 @@
+<div class="container-fluid animated faster fadeInUp py-5" [ngClass]="{'text-white blue-grey darken-4': darkMode}">
+    <div class="container">
+
+        <div class="row py-5">
+            <div class="col-sm">
+                <div class="alert alert-warning p-2 z-depth-0">
+                    <u><b>Aviso</b></u>
+                    <br>Para hacer efectiva la modificación de sus datos, debe pulsar el botón 'actualizar datos'.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                        (click)="errorInput = !errorInput">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <form *ngIf="user" class="rgba-black-slight rounded z-depth-1 p-5 mx-1 card" [ngClass]="{'text-white': darkMode}">
+            <div class="row">
+                    <p class="h4-responsive">Datos del usuario: <b>{{user.username}}</b></p>
+            </div>
+            <hr>
+            <div class="form-group row my-5">
+
+                <div class="col-sm-6">
+                    <p class="h6-responsive">Imagen de perfil</p>
+                </div>
+
+                <div class="col-sm-6">
+                    <img *ngIf="user?.imgAvatar" src="http://localhost:8080/biblio/uploads/img/{{user.imgAvatar}}"
+                        class="card-img-100 rounded-circle z-depth-1 my-3">
+                    <img *ngIf="!user?.imgAvatar" src="http://localhost:8080/images/no-user.png"
+                        class="card-img-100 rounded-circle z-depth-1 my-3">
+                    <div *ngIf="progreso > 0" class="progress mt-3" style="height: 35px">
+                        <div *ngIf="progreso < 100"
+                            class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                            [ngStyle]="{width: progreso + '%'}" style="height: 35px" role="progressbar"
+                            attr.aria-valuenow="{{progreso}}" aria-valuemin="0" aria-valuemax="100">
+                            {{progreso}}%
+                        </div>
+                        <div *ngIf="progreso == 100"
+                            class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                            [ngStyle]="{width: progreso + '%'}" style="height: 35px" role="progressbar"
+                            attr.aria-valuenow="{{progreso}}" aria-valuemin="0" aria-valuemax="100">
+                            Completado
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="custom-file mt-2">
+                            <input (change)="seleccionarFoto($event)" type="file" class="custom-file-input"
+                                id="inputFile">
+                            <label class="custom-file-label text-left" for="inputFile">{{ selImage }}</label>
+                        </div>
+                        <div class="input-group-append">
+                            <button (click)="subirFoto()" [disabled]="!fotoSeleccionada"
+                                class="btn btn-teal rounded-pill z-depth-0" type="button"
+                                id="inputGroupFileAddon04">Subir</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group row py-5">
+
+                <div class="col-sm-6">
+                    <p class="h6-responsive">Datos del usuario</p>
+                </div>
+                <div class="col-sm">
+                    <div class="row">
+
+                        <div class="col-sm">
+                            Nombre de usuario:
+                            <input type="text" class="form-control disabled border-info" [(ngModel)]="user.username"
+                                name="username">
+                        </div>
+                        <div class="col-sm">
+                            Contraseña:
+                            <input type="password" class="form-control disabled border-info" [(ngModel)]="user.password"
+                                name="password">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="form-group row">
+
+                <div class="col-sm-6">
+                    <p class="h6-responsive">Datos personales</p>
+                </div>
+
+                <div class="col-sm">
+                    <div class="row">
+
+                        <div class="col-sm py-2">
+                            Nombre
+                            <input type="text" class="form-control border-info" [(ngModel)]="user.nombre" name="nombre">
+                        </div>
+                        <div class="col-sm py-2">
+                            Rol único nacional (RUN)
+                            <input type="text" class="form-control disabled border-info" [(ngModel)]="user.rut"
+                                name="rut" formatRut>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-sm py-2">
+                            Apellido Materno
+                            <input type="text" class="form-control border-info" [(ngModel)]="user.apellidoMaterno"
+                                name="apellidoMaterno">
+                        </div>
+                        <div class="col-sm py-2">
+                            Apellido Paterno
+                            <input type="text" class="form-control border-info" [(ngModel)]="user.apellidoPaterno"
+                                name="apellidoPaterno">
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm py-2">
+                            Correo electrónico
+                            <input type="text" class="form-control border-info" [(ngModel)]="user.email" name="email">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row pt-5">
+                <div class="ml-auto col-sm-3">
+                    <button [routerLink]="['/']"
+                        class="btn z-depth-0 btn-dark rounded-pill"><i
+                            class="fas fa-arrow-circle-left"></i> Volver</button>
+                </div>
+                <div class="ml-0 col-sm-3">
+                    <button (click)="updateUser()"
+                        class="btn z-depth-0 btn-success rounded-pill">Actualizar
+                        datos</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

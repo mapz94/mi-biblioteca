@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DarkModeService } from 'src/app/services/dark-mode.service';
+import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
   selector: 'app-footer',
@@ -8,12 +8,13 @@ import { DarkModeService } from 'src/app/services/dark-mode.service';
 })
 export class FooterComponent implements OnInit {
 
-  darkMode:boolean;
+  darkMode: boolean;
 
-  constructor( private dark: DarkModeService ) { }
+  constructor( private themeService: ThemeService ) { }
 
   ngOnInit() {
-    this.dark.darkMode.subscribe(dark => this.darkMode = dark);
+    this.themeService.isDarkTheme.subscribe(dark => this.darkMode = dark);
+    this.themeService.loadDarkTheme();
   }
 
 }

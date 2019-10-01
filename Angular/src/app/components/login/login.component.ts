@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewEncapsulation, HostListener } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserlogService } from 'src/app/services/userlog.service';
-import { UserService } from 'src/app/services/user.service';
-import { DarkModeService } from 'src/app/services/dark-mode.service';
 import { User } from 'src/app/class/User';
+import { HttpService } from 'src/app/services/http.service';
+import { ThemeService } from 'src/app/services/theme.service';
+import { UserlogService } from 'src/app/services/userlog.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -19,24 +20,30 @@ export class LoginComponent implements OnInit {
   errorLogin = false;
   remember: boolean;
   id: any;
-  checkMode: boolean;
+  check: boolean;
+  checkDark: boolean;
   darkMode: boolean;
-  body = document.getElementsByTagName('body') as HTMLCollectionOf<HTMLElement>;
+  innerWidth: number;
 
-  constructor(private router: Router, private userLog: UserlogService, private user: UserService, private dark: DarkModeService) {
+  private urlUsers = 'http://localhost:8080/biblio/users';
+
+  constructor(private router: Router, private userLog: UserlogService,
+              private httpService: HttpService, private themeService: ThemeService) {
 
   }
 
   ngOnInit() {
+    this.innerWidth = window.innerWidth;
     this.loadUser();
-    this.dark.darkMode.subscribe(dark => this.darkMode = dark);
-    this.checkMode = this.darkMode;
-    if (this.darkMode) {
-      this.body[0].style.backgroundColor = '#2e2e2e';
-    } else {
-      this.body[0].style.backgroundColor = '#fff';
-    }
-    this.user.getUsers().subscribe(user => this.users = user);
+    this.themeService.isDarkTheme.subscribe(dark => this.darkMode = dark);
+    this.themeService.setDarkTheme(this.themeService.loadDarkTheme());
+    this.checkDark = this.darkMode;
+    this.httpService.getAll(this.urlUsers).subscribe(user => this.users = user);
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.innerWidth = window.innerWidth;
   }
 
   checkCheckBoxvalue(check: any) {
@@ -44,12 +51,7 @@ export class LoginComponent implements OnInit {
   }
 
   checkDarkMode(check: any) {
-    this.dark.setDarkModeValue(check);
-    if (this.darkMode) {
-      this.body[0].style.backgroundColor = '#2e2e2e';
-    } else {
-      this.body[0].style.backgroundColor = '#fff';
-    }
+    this.themeService.setDarkTheme(check);
   }
 
   validateAdmin(): boolean {
@@ -59,7 +61,7 @@ export class LoginComponent implements OnInit {
       }
       this.userLog.userID = '0';
       this.userLog.userLog = 'Admin';
-      this.router.navigate(['/home']);
+      this.router.navigate(['/']);
       Swal.fire({position: 'top', title: `Bienvenido usuario Debug!`,
                    text: 'Cargando...',
                    timer: 1000,
@@ -82,7 +84,7 @@ export class LoginComponent implements OnInit {
           }
           this.userLog.userID = String(i.id);
           this.userLog.userLog = i.username;
-          this.router.navigate(['/home']);
+          this.router.navigate(['/']);
           Swal.fire({position: 'center', title: `Bienvenido ${i.nombre}!`,
                    text: 'Cargando...',
                    timer: 1000,
@@ -101,7 +103,7 @@ export class LoginComponent implements OnInit {
       this.userLog.userID = localStorage.getItem('id_activo');
     }
     if (this.userLog.userLog !== null) {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/']);
     }
   }
 }

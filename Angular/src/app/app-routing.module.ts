@@ -1,28 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { AboutComponent } from './components/about/about.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
-import { ForgetComponent } from './components/forget/forget.component';
-import { UserInfoComponent } from './components/user-info/user-info.component';
-import { PrestamosComponent } from './components/prestamos/prestamos.component';
-import { SearchComponent } from './components/search/search.component';
+import { AboutComponent } from './components/home/about/about.component';
+import { UserInfoComponent } from './components/home/user-info/user-info.component';
 import { UserlogService } from './services/userlog.service';
-import { MbiblioComponent } from './components/mbiblio/mbiblio.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
+import { PrestamosComponent } from './components/prestamos/prestamos.component';
 
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent},
-  { path: 'about', component: AboutComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'register', component: RegisterComponent},
-  { path: 'forget', component: ForgetComponent},
-  { path: 'user/:id', component: UserInfoComponent},
-  { path: 'prestamos', component: PrestamosComponent},
-  { path: 'search', component: SearchComponent},
-  { path: 'search/:id', component: MbiblioComponent},
-  { path: '', redirectTo: 'login', pathMatch: 'full'}
+  { path: '', component: HomeComponent},
+  { path: 'home/about', component: AboutComponent},
+  { path: 'home/user/:id', component: UserInfoComponent},
+  { path: 'prestamos', component: PrestamosComponent },
+  { path: 'search', loadChildren: () => import('./components/search/search.module').then(m => m.SearchModule) },
+  { path: 'login', loadChildren: () => import('./components/login/login.module').then(m => m.LoginModule) },
+  { path: '404', component: NotfoundComponent },
+  { path: '**', redirectTo: '/404' }
 ];
 
 @NgModule({

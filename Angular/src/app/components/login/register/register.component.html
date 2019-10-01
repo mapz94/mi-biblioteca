@@ -1,22 +1,25 @@
 <div class="container animated faster fadeIn" [ngClass]="{'elegant-color': darkMode}">
     <div class="row my-5 align-content-between">
         <div class="col-sm-6">
-            <i class="h1 fas fa-book-reader animated faster fadeIn" [ngClass]="{'text-white': darkMode, 'text-muted': !darkMode}"></i>
+            <i class="h1 fas fa-book-reader animated faster fadeIn"
+                [ngClass]="{'text-white': darkMode, 'text-muted': !darkMode}"></i>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <p class="h4 mb-5 text-center" [ngClass]="{'text-white': darkMode, 'text-muted': !darkMode}">Formulario de registro</p>
+            <p class="h4 mb-5 text-center" [ngClass]="{'text-white': darkMode, 'text-muted': !darkMode}">Formulario de
+                registro</p>
             <div class="alert alert-info mx-5">Por favor llene todos los campos solicitados.
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form (ngSubmit)="create()" #registerForm="ngForm">
+            <form (ngSubmit)="registerUser()" #registerForm="ngForm">
                 <div class="form-group row">
                     <div class="col-sm-12">
                         <div class="md-form text-left">
-                            <input type="text" class="form-control my-3" [(ngModel)]="user.username" name="username" required #username="ngModel">
+                            <input type="text" class="form-control my-3" [(ngModel)]="user.username" name="username"
+                                required #username="ngModel">
                             <label for="inputUser" [ngClass]="{'text-white': darkMode}">Usuario</label>
                             <small class="text-danger" *ngIf="username.invalid && (username.dirty || username.touched)">
                                 <div *ngIf="username.errors.required">
@@ -29,7 +32,8 @@
                 <div class="form-group row">
                     <div class="col-sm-6">
                         <div class="md-form text-left">
-                            <input type="text" class="form-control my-3" [(ngModel)]="user.email" name="email" required email #email="ngModel">
+                            <input type="text" class="form-control my-3" [(ngModel)]="user.email" name="email" required
+                                email #email="ngModel">
                             <label for="inputUser" [ngClass]="{'text-white': darkMode}">E-mail</label>
                             <small class="text-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
                                 <div *ngIf="email.errors.required">
@@ -43,10 +47,12 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="md-form text-left">
-                            <input type="text" class="form-control my-3" [(ngModel)]="user.rut" name="rut" validateRut formatRut required #rut="ngModel">
+                            <input type="text" class="form-control my-3" [(ngModel)]="user.rut" name="rut" validateRut
+                                formatRut required #rut="ngModel">
                             <label for="inputUser" [ngClass]="{'text-white': darkMode}">RUN</label>
-                            <small id="Help" class="form-text" [ngClass]="{'text-white': darkMode, 'text-muted': !darkMode}">
-                                    Ejemplo de RUN sin puntos ni guíon: 123456789</small>
+                            <small id="Help" class="form-text"
+                                [ngClass]="{'text-white': darkMode, 'text-muted': !darkMode}">
+                                Ejemplo de RUN sin puntos ni guíon: 123456789</small>
                             <small class="text-danger" *ngIf="rut.invalid && (rut.dirty || rut.touched)">
                                 <div *ngIf="rut.errors.required">
                                     Debe ingresar un RUN.
@@ -61,7 +67,8 @@
                 <div class="form-group row">
                     <div class="col-sm-4">
                         <div class="md-form text-left">
-                            <input type="text" class="form-control my-3" [(ngModel)]="user.nombre" name="nombre" required #nombre="ngModel">
+                            <input type="text" class="form-control my-3" [(ngModel)]="user.nombre" name="nombre"
+                                required #nombre="ngModel">
                             <label for="inputUser" [ngClass]="{'text-white': darkMode}">Nombre</label>
                             <small class="text-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
                                 <div *ngIf="nombre.errors.required">
@@ -72,9 +79,11 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="md-form text-left">
-                            <input type="text" class="form-control my-3" [(ngModel)]="user.apellidoPaterno" name="apellidoPaterno" required #apellidoPaterno="ngModel">
+                            <input type="text" class="form-control my-3" [(ngModel)]="user.apellidoPaterno"
+                                name="apellidoPaterno" required #apellidoPaterno="ngModel">
                             <label for="inputUser" [ngClass]="{'text-white': darkMode}">Apellido Paterno</label>
-                            <small class="text-danger" *ngIf="apellidoPaterno.invalid && (apellidoPaterno.dirty || apellidoPaterno.touched)">
+                            <small class="text-danger"
+                                *ngIf="apellidoPaterno.invalid && (apellidoPaterno.dirty || apellidoPaterno.touched)">
                                 <div *ngIf="apellidoPaterno.errors.required">
                                     Debe ingresar su Apellido Paterno.
                                 </div>
@@ -83,9 +92,11 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="md-form text-left">
-                            <input type="text" class="form-control my-3" [(ngModel)]="user.apellidoMaterno" name="apellidoMaterno" required #apellidoMaterno="ngModel">
+                            <input type="text" class="form-control my-3" [(ngModel)]="user.apellidoMaterno"
+                                name="apellidoMaterno" required #apellidoMaterno="ngModel">
                             <label for="inputUser" [ngClass]="{'text-white': darkMode}">Apellido Materno</label>
-                            <small class="text-danger" *ngIf="apellidoMaterno.invalid && (apellidoMaterno.dirty || apellidoMaterno.touched)">
+                            <small class="text-danger"
+                                *ngIf="apellidoMaterno.invalid && (apellidoMaterno.dirty || apellidoMaterno.touched)">
                                 <div *ngIf="apellidoMaterno.errors.required">
                                     Debe ingresar su Apellido Materno.
                                 </div>
@@ -96,10 +107,12 @@
                 <div class="form-group row">
                     <div class="col-sm-12">
                         <div class="md-form text-left">
-                            <input type="password" class="form-control my-3" [(ngModel)]="user.password" name="password" required #password="ngModel" minlength="8">
+                            <input type="password" class="form-control my-3" [(ngModel)]="user.password" name="password"
+                                required #password="ngModel" minlength="8">
                             <label for="inputPass" [ngClass]="{'text-white': darkMode}">Contraseña</label>
-                            <small id="Help" class="form-text" [ngClass]="{'text-white': darkMode, 'text-muted': !darkMode}">
-                                    Tu contraseña debe contener minimo 8 caracteres.</small>
+                            <small id="Help" class="form-text"
+                                [ngClass]="{'text-white': darkMode, 'text-muted': !darkMode}">
+                                Tu contraseña debe contener minimo 8 caracteres.</small>
                             <small class="text-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
                                 <div *ngIf="password.errors.required">
                                     Debe ingresar su contraseña.
@@ -117,8 +130,9 @@
                     <div class="md-form text-left">
                         <input type="password" class="form-control" [(ngModel)]="confPass">
                         <label for="inputPass" [ngClass]="{'text-white': darkMode}">Confirmar Contraseña</label>
-                        <small *ngIf="user.password != confPass" class="text-danger animated fadeIn faster">Las contraseñas no
-                                coinciden.</small>
+                        <small *ngIf="(user.password != confPass)" class="text-danger animated fadeIn faster">Las
+                            contraseñas no
+                            coinciden.</small>
                     </div>
                 </div>
             </div>
@@ -126,22 +140,25 @@
             <div class="row py-3 mb-5">
                 <div class="col-sm-12 text-center">
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember" [(ngModel)]="check" (change)="checkCheckBoxvalue(check)">
-                        <label class="custom-control-label" [ngClass]="{'text-white': darkMode}" for="defaultLoginFormRemember">Acepto los terminos y
-                                            condiciones</label>
+                        <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember"
+                            [(ngModel)]="check" (change)="checkCheckBoxvalue(check)">
+                        <label class="custom-control-label" [ngClass]="{'text-white': darkMode}"
+                            for="defaultLoginFormRemember">Acepto los terminos y
+                            condiciones</label>
                     </div>
                     <small *ngIf="terminsError" class="text-danger">Para continuar debe aceptar los terminos y
-                                        condiciones.</small>
+                        condiciones.</small>
                 </div>
             </div>
             <div class="row mt-2">
                 <div class="col-sm-6 mt-3">
                     <a routerLink="/login" class="btn btn-block btn-danger rounded-pill z-depth-0"><i
-                                class="fas fa-arrow-circle-left text-white"></i> Cancelar registro</a>
+                            class="fas fa-arrow-circle-left text-white"></i> Cancelar registro</a>
                 </div>
                 <div class="col-sm-6 mt-3">
-                    <button class="btn btn-block btn-success rounded-pill z-depth-0" type="submit" (click)="registerUser()" [disabled]="!registerForm.form.valid">Crear
-                                    usuario</button>
+                    <button class="btn btn-block btn-success rounded-pill z-depth-0" type="submit"
+                        (click)="registerUser()" [disabled]="!registerForm.form.valid">Crear
+                        usuario</button>
                 </div>
             </div>
         </div>

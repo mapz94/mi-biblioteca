@@ -19,28 +19,28 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<User> findAll() {
-		// TODO Auto-generated method stub
+		
 		return (List<User>) userDao.findAll();
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public User findById(Long id) {
-		// TODO Auto-generated method stub
+		
 		return userDao.findById(id).orElse(null);
 	}
 
 	@Override
 	@Transactional
 	public User save(User user) {
-		// TODO Auto-generated method stub
+		
 		return userDao.save(user);
 	}
 
 	@Override
 	@Transactional
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
+		
 		userDao.deleteById(id);
 	}
 	

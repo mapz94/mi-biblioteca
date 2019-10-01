@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-BibliotecaSpringbootBackendApplication<biblioteca-springboot-backend>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.biblioteca.springboot.backend.BibliotecaSpringbootBackendApplication",
+            "projectName": "biblioteca-springboot-backend",
+            "args": ""
+        }
+    ]
+}

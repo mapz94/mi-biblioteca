@@ -24,14 +24,16 @@
 }
 
 .md-form input:not(.browser-default) {
-    background-color: none;
+    background-color: rgb(230, 230, 230);
     transition: all .5 ease-in-out !important;
+    color: #333;
 }
 
 .fas {
-    color: teal;
+    color: #999;
+    font-weight: 600;
 }
 
 .md-form .prefix.active {
-    color: teal;
+    color: #999;
 }

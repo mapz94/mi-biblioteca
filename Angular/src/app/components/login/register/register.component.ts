@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
-import { DarkModeService } from 'src/app/services/dark-mode.service';
 import { User } from 'src/app/class/User';
 import Swal from 'sweetalert2';
+import { ThemeService } from 'src/app/services/theme.service';
+import { HttpService } from 'src/app/services/http.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -20,13 +21,15 @@ export class RegisterComponent implements OnInit {
   termins = false;
   terminsError = false;
   empty: number;
+  check: boolean;
   darkMode: boolean;
+  private urlUsers = 'http://localhost:8080/biblio/users';
 
-  constructor(private userService: UserService, private router: Router, private dark: DarkModeService) { }
+  constructor(private httpService: HttpService, private router: Router, private themeService: ThemeService) { }
 
   ngOnInit() {
-    this.dark.darkMode.subscribe(dark => this.darkMode = dark);
-    this.userService.getUsers().subscribe(user => this.users = user);
+    this.themeService.isDarkTheme.subscribe(dark => this.darkMode = dark);
+    this.httpService.getAll(this.urlUsers).subscribe(user => this.users = user);
   }
 
   checkCheckBoxvalue(check: any) {
@@ -44,7 +47,7 @@ export class RegisterComponent implements OnInit {
 
   registerUser(): void {
     if (this.termins) {
-      this.userService.create(this.user).subscribe(
+      this.httpService.create(this.urlUsers, this.user).subscribe(
         response => {
           this.router.navigate(['/login']);
           Swal.fire({position: 'top-end', title: 'Registro',

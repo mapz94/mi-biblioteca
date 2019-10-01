@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
-  selector: 'app-prestamos',
-  templateUrl: './prestamos.component.html',
-  styleUrls: ['./prestamos.component.scss']
+  selector: 'app-about',
+  templateUrl: './about.component.html',
+  styleUrls: ['./about.component.scss']
 })
-export class PrestamosComponent implements OnInit {
+export class AboutComponent implements OnInit {
 
   darkMode: boolean;
 
@@ -14,7 +14,7 @@ export class PrestamosComponent implements OnInit {
 
   ngOnInit() {
     this.themeService.isDarkTheme.subscribe( dark => this.darkMode = dark);
-    window.scrollTo({top: 0, behavior: 'smooth'});
+    this.themeService.setDarkTheme(this.themeService.loadDarkTheme());
   }
 
 }

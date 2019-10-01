@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DarkModeService } from 'src/app/services/dark-mode.service';
+import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
   selector: 'app-forget',
@@ -10,12 +10,12 @@ export class ForgetComponent implements OnInit {
 
   errorInput = false;
 
-  constructor(private dark: DarkModeService) { }
+  constructor(private themeService: ThemeService) { }
 
   darkMode: boolean;
 
   ngOnInit() {
-    this.dark.darkMode.subscribe(dark => this.darkMode = dark);
+    this.themeService.isDarkTheme.subscribe(dark => this.darkMode = dark);
   }
 
   recuperaPass() {

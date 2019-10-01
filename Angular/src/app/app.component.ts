@@ -1,10 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { UserlogService } from './services/userlog.service';
 import { Router } from '@angular/router';
-import { UserService } from './services/user.service';
-import { DarkModeService } from './services/dark-mode.service';
-import { Button } from 'protractor';
-import { delay } from 'q';
+import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -13,29 +10,27 @@ import { delay } from 'q';
 })
 export class AppComponent implements OnInit {
   title = 'Mi biblioteca';
-  body = document.getElementsByTagName('body') as HTMLCollectionOf<HTMLElement>;
-  darkMode: boolean;
+  darkTheme: boolean;
   scrollPos: number;
+  user: any = null;
 
-  constructor(private userLog: UserlogService, private router: Router, private user: UserService, private dark: DarkModeService) {
+  constructor(public userLogService: UserlogService, private router: Router, private themeService: ThemeService) {
   }
 
   ngOnInit() {
-    this.dark.setDarkModeValue(this.dark.getDarkModeValue());
-    this.dark.darkMode.subscribe(dark => this.darkMode = dark);
-    if (this.darkMode) {
-    }
-    this.scrollUp();
+    this.themeService.isDarkTheme.subscribe(dark => this.darkTheme = dark);
+    this.themeService.setDarkTheme(this.themeService.loadDarkTheme());
     this.scrollPos = window.pageYOffset;
+    this.scrollUp();
     this.loadUser();
   }
 
   loadUser(): void {
     if (localStorage.getItem('usuario_activo') != null && localStorage.getItem('id_activo') != null) {
-      this.userLog.userLog = localStorage.getItem('usuario_activo');
-      this.userLog.userID = localStorage.getItem('id_activo');
-    }
-    if (this.userLog.userLog === null) {
+      this.userLogService.userLog = localStorage.getItem('usuario_activo');
+      this.userLogService.userID = localStorage.getItem('id_activo');
+      this.user = this.userLogService.userLog;
+    } else {
       this.router.navigate(['/login']);
     }
   }
@@ -47,24 +42,16 @@ export class AppComponent implements OnInit {
   @HostListener('window:scroll', ['$event'])
   async doSomething(event) {
     this.scrollPos = window.pageYOffset;
-<<<<<<< HEAD:Angular/src/app/app.component.ts
     const button = document.getElementsByClassName('btn-circle') as HTMLCollectionOf<HTMLElement>;
     if (this.scrollPos > 250) {
-=======
-    let button = document.getElementsByClassName('btn-circle') as HTMLCollectionOf<HTMLElement>;
-    if(this.scrollPos > 250){
->>>>>>> f4cd18d27b70f8520b05f9030e1f10c728af9f13:src/app/app.component.ts
       button[0].style.right = '5%';
     } else {
       button[0].style.right = '-50%';
     }
-<<<<<<< HEAD:Angular/src/app/app.component.ts
   }
 
   @HostListener('contextmenu', ['$event'])
   onRightClick(event) {
     event.preventDefault();
-=======
->>>>>>> f4cd18d27b70f8520b05f9030e1f10c728af9f13:src/app/app.component.ts
   }
 }

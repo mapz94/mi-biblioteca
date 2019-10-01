@@ -1,12 +1,10 @@
 import { Component, OnInit, ViewEncapsulation, Input, HostListener } from '@angular/core';
-import * as user from '../../global';
 import { UserlogService } from 'src/app/services/userlog.service';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/services/user.service';
-import { DarkModeService } from 'src/app/services/dark-mode.service';
 import { Subscription } from 'rxjs';
-import { delay } from 'q';
 import { User } from 'src/app/class/User';
+import { ThemeService } from 'src/app/services/theme.service';
+import { HttpService } from 'src/app/services/http.service';
 
 @Component({
   selector: 'app-home',
@@ -22,15 +20,18 @@ export class HomeComponent implements OnInit {
   collapseOne: boolean;
   collapseTwo: boolean;
   innerWidth: number;
+  private urlUsers = 'http://localhost:8080/biblio/users';
 
-  constructor(private userLog: UserlogService, private router: Router, private dark: DarkModeService, private userService: UserService) {
+  constructor(private userLog: UserlogService, private router: Router,
+              private themeService: ThemeService, private httpService: HttpService) {
 
   }
 
   ngOnInit() {
 
-    this.dark.darkMode.subscribe(dark => this.darkMode = dark);
-    this.userService.getUserById(this.userLog.userID).subscribe(val => this.user = val);
+    this.themeService.isDarkTheme.subscribe(dark => this.darkMode = dark);
+    this.themeService.loadDarkTheme();
+    this.httpService.getById(this.urlUsers, this.userLog.userID).subscribe(val => this.user = val);
     this.innerWidth = window.innerWidth;
 
     if (localStorage.getItem('usuario_activo') != null && localStorage.getItem('id_activo') != null) {

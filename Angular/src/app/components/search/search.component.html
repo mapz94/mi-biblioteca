@@ -2,17 +2,17 @@
     <div class="row">
         <div class="col-sm-12">
             <!-- Button -->
-            <a routerLink="/home" class="btn btn-block btn-return-red waves-effect waves-light text-capitalize rounded-pill text-white z-depth-0"><i
+            <a routerLink="/" class="btn btn-block btn-return-red waves-effect waves-light text-capitalize rounded-pill text-white z-depth-0"><i
                     class="fas fa-arrow-circle-left text-white"></i> Volver al inicio</a>
         </div>
 
     </div>
     <div class="row mt-3">
         <div class="col-sm-12">
-            <div class="md-form text-left">
+            <div class="md-form md-outline text-left">
                 <i class="fas fa-book prefix color-ico"></i>
                 <input type="text" id="SearchForm" class="form-control mb-4" [(ngModel)]="valorBusqueda" (keyup)="buscarMB(valorBusqueda)">
-                <label for="SearchForm" [ngClass]="{'text-white':darkMode}">Buscar Libro</label>
+                <label for="SearchForm" class="bg-transparent" [ngClass]="{'text-white':darkMode}">Buscar Libro</label>
             </div>
         </div>
     </div>

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MbibliograficoService } from 'src/app/services/mbibliografico.service';
-import { DarkModeService } from 'src/app/services/dark-mode.service';
 import { MaterialBibliografico } from 'src/app/class/MaterialBibliografico';
+import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
   selector: 'app-search',
@@ -16,17 +16,15 @@ export class SearchComponent implements OnInit {
   termino: string;
   valorBusqueda = '';
 
-  constructor(private activatedRoute: ActivatedRoute,
-              private mBibliograficoService: MbibliograficoService,
-              private router: Router,
-              private dark: DarkModeService) {
+  constructor(private mBibliograficoService: MbibliograficoService,
+              private themeService: ThemeService) {
 
   }
 
   darkMode: boolean;
 
   ngOnInit() {
-    this.dark.darkMode.subscribe(dark => this.darkMode = dark);
+    this.themeService.isDarkTheme.subscribe(dark => this.darkMode = dark);
     this.mBibliograficoService.getMbiblios().subscribe(val => this.materialBibliografico = val);
     window.scrollTo({top: 0, behavior: 'smooth'});
   }

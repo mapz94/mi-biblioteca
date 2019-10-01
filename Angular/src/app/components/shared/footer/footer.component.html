@@ -1,4 +1,4 @@
-<div class="row py-5 justify-content-between">
+<div class="row py-5 justify-content-between" [ngClass]="{'blue-grey darken-4':darkMode}">
     <div class="col-sm-3 mx-5">
         <a class="navbar-brand h2 teal-text" routerLink="/home">
             <i class="fas fa-book-reader mx-2"></i>
@@ -8,7 +8,7 @@
     <div class="col-sm-3 mx-5" [ngClass]="{'text-white':darkMode}">
         <p class="h6-responsive">Mapa de la página</p>
         <ul>
-            <a routerLink="/home">Home</a>
+            <a routerLink="/">Home</a>
         </ul>
         <ul>
             <a routerLink="/search">Materíal bibliográfico</a>
@@ -17,7 +17,7 @@
             <a routerLink="/prestamos">Prestamos vigentes</a>
         </ul>
         <ul>
-            <a routerLink="/user-info">Mi información</a>
+            <a routerLink="/home/user-info">Mi información</a>
         </ul>
     </div>
     <div class="col-sm-3 mx-5" [ngClass]="{'text-white':darkMode}">
@@ -27,11 +27,9 @@
             <i class="fab fa-java mx-2 h2-responsive"></i>
     </div>
 </div>
-<div class="row py-5 justify-content-between">
+<div class="row py-5 justify-content-between" [ngClass]="{'blue-grey darken-4':darkMode}">
     <div class="col-sm-5 mx-5" [ngClass]="{'text-white':darkMode}">
         © 2019 Mi biblioteca.<br>
         Página desarrollada por Cristian Molina y Miguel Pérez.
-    </div>
-    <div class="col-sm-3 m-1">
     </div>
 </div>

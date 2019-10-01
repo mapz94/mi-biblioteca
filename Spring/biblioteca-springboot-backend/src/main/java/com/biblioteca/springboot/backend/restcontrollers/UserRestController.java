@@ -156,7 +156,6 @@ public class UserRestController {
 		try {
 			recurso = uploadService.cargar(nombreAvatar);
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

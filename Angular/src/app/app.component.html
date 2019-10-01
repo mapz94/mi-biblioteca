@@ -1,3 +1,5 @@
-<app-navbar *ngIf="userLog.userLog != null"></app-navbar>
-<router-outlet></router-outlet>
+<app-navbar *ngIf="userLogService.userLog"></app-navbar>
 <div (click)="scrollUp()" class="btn btn-teal rounded-circle btn-circle text-center z-depth-2"><i class="fas fa-arrow-up"></i></div>
+<div [ngClass]="{'dark-theme': isDarkTheme | async}">
+    <router-outlet></router-outlet>
+</div>
