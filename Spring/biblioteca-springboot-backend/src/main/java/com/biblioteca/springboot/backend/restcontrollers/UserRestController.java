@@ -28,7 +28,8 @@ import com.biblioteca.springboot.backend.models.entity.User;
 import com.biblioteca.springboot.backend.models.services.IUploadFileService;
 import com.biblioteca.springboot.backend.models.services.IUserService;
 
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+// @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 @RequestMapping("/biblio")
 public class UserRestController {
