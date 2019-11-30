@@ -21,27 +21,27 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.biblioteca.springboot.backend.GlobalMessage;
-import com.biblioteca.springboot.backend.models.entity.Libro;
-import com.biblioteca.springboot.backend.models.services.ILibroService;
+import com.biblioteca.springboot.backend.models.entity.Categoria;
+import com.biblioteca.springboot.backend.models.services.ICategoriaService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 // @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
-@RequestMapping("/biblio/Libros")
-public class LibroRestController {
+@RequestMapping("/biblio/categorias")
+public class CategoriaRestController {
 	
 	@Autowired
-	private ILibroService principalService;
+	private ICategoriaService principalService;
 	
 	
 	@GetMapping({"","/"})
-	public List<Libro> index() {
+	public List<Categoria> index() {
 		return principalService.findAll();
 	}
 	
 	@GetMapping({"/{id}","/{id}/"})
 	public ResponseEntity<?> show(@PathVariable Long id) {
-		Libro objectSearch = null;
+		Categoria objectSearch = null;
 		Map<String, Object> response = new HashMap<>();
 		try { 
 			objectSearch = principalService.findById(id);
@@ -53,50 +53,39 @@ public class LibroRestController {
 		if ( objectSearch == null ) {
 			return GlobalMessage.notFound();
 		}
-		return new ResponseEntity<Libro>(objectSearch, HttpStatus.OK);
+		return new ResponseEntity<Categoria>(objectSearch, HttpStatus.OK);
 	}
 	
 	@PostMapping({"/","" })
-	public ResponseEntity<?> create(@RequestBody Libro objectRefered) {
-		Libro objectCreated = null;
+	public ResponseEntity<?> create(@RequestBody Categoria objectRefered) {
+		Categoria objectCreated = null;
 		Map<String, Object> response = new HashMap<>();
 		try {
 			objectCreated = principalService.save(objectRefered);
-<<<<<<< HEAD
-
-		} catch(DataAccessException e) {
-			return GlobalMessage.internalServerError();
-		}
-=======
 		} catch(DataAccessException e) {
 			return GlobalMessage.internalServerError();
 		}
 		//response.put("mensaje", "El material bibliografico ha sido creado con éxito!.");
->>>>>>> Miguel back from the dead
 		response.put("data", objectCreated );
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	
 	
 	@PutMapping({"/{id}","/{id}/"})
-	public ResponseEntity<?> update(@RequestBody Libro libro, @PathVariable Long id) {
-		Libro libroActual = principalService.findById(id);
-		Libro libroUpdated = null;
+	public ResponseEntity<?> update(@RequestBody Categoria categoria, @PathVariable Long id) {
+		Categoria categoriaActual = principalService.findById(id);
+		Categoria categoriaUpdated = null;
 		Map<String, Object> response = new HashMap<>();
-		if ( libroActual == null ) {
+		if ( categoriaActual == null ) {
 			return GlobalMessage.notFound();
 		}
 		try {
-<<<<<<< HEAD
-			//TODO: Obtener los datos de MaterialBibliografico		
-=======
-			libroActual.setLibro(libro.getLibro());			
->>>>>>> Miguel back from the dead
-			libroUpdated = principalService.save(libroActual);
+			categoriaActual.setCategoria(categoria.getCategoria());			
+			categoriaUpdated = principalService.save(categoriaActual);
 		} catch(DataAccessException e) {
 			return GlobalMessage.internalServerError();
 		}
-		response.put("data", libroUpdated);
+		response.put("data", categoriaUpdated);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 		
 	}
