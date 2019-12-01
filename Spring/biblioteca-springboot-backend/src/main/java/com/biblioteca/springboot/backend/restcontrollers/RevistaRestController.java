@@ -27,7 +27,7 @@ import com.biblioteca.springboot.backend.models.services.IRevistaService;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 // @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
-@RequestMapping("/biblio/Revistas")
+@RequestMapping("/biblio/revistas")
 public class RevistaRestController {
 	
 	@Autowired

@@ -27,7 +27,7 @@ import com.biblioteca.springboot.backend.models.services.IPersonaService;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 // @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
-@RequestMapping("/biblio/Personas")
+@RequestMapping("/biblio/personas")
 public class PersonaRestController {
 	
 	@Autowired

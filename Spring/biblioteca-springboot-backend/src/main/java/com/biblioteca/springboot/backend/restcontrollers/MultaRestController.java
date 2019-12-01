@@ -27,7 +27,7 @@ import com.biblioteca.springboot.backend.models.services.IMultaService;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 // @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
-@RequestMapping("/biblio/Multas")
+@RequestMapping("/biblio/multas")
 public class MultaRestController {
 	
 	@Autowired

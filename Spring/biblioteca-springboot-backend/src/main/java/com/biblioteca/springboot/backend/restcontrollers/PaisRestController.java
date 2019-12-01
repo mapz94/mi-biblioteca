@@ -27,7 +27,7 @@ import com.biblioteca.springboot.backend.models.services.IPaisService;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 // @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
-@RequestMapping("/biblio/Pais")
+@RequestMapping("/biblio/paises")
 public class PaisRestController {
 	
 	@Autowired

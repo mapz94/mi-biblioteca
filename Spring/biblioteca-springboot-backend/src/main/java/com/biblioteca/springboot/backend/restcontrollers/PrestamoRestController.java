@@ -27,7 +27,7 @@ import com.biblioteca.springboot.backend.models.services.IPrestamoService;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 // @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
-@RequestMapping("/biblio/Prestamos")
+@RequestMapping("/biblio/prestamos")
 public class PrestamoRestController {
 	
 	@Autowired

@@ -27,7 +27,7 @@ import com.biblioteca.springboot.backend.models.services.IProyectoService;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 // @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
-@RequestMapping("/biblio/Proyectos")
+@RequestMapping("/biblio/proyectos")
 public class ProyectoRestController {
 	
 	@Autowired

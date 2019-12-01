@@ -1,5 +1,5 @@
 package com.biblioteca.springboot.backend.restcontrollers;
-
+ 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.HashMap;
@@ -32,7 +32,7 @@ import com.biblioteca.springboot.backend.models.services.ISocioService;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 // @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
-@RequestMapping("/biblio/Socios")
+@RequestMapping("/biblio/socios")
 public class SocioRestController {
 	
 	@Autowired
