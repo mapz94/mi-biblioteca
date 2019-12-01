@@ -62,27 +62,14 @@ public class LibroRestController {
 		Map<String, Object> response = new HashMap<>();
 		try {
 			objectCreated = principalService.save(objectRefered);
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 		} catch(DataAccessException e) {
 			return GlobalMessage.internalServerError();
 		}
-=======
-		} catch(DataAccessException e) {
-			return GlobalMessage.internalServerError();
-		}
-		//response.put("mensaje", "El material bibliografico ha sido creado con éxito!.");
->>>>>>> Miguel back from the dead
-=======
-
-		} catch(DataAccessException e) {
-			return GlobalMessage.internalServerError();
-		}
->>>>>>> commit
-		response.put("data", objectCreated );
+		response.put("data", objectCreated);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
+
 	
 	
 	@PutMapping({"/{id}","/{id}/"})
@@ -94,11 +81,7 @@ public class LibroRestController {
 			return GlobalMessage.notFound();
 		}
 		try {
-<<<<<<< HEAD
-			//TODO: Obtener los datos de MaterialBibliografico		
-=======
-			libroActual.setLibro(libro.getLibro());			
->>>>>>> Miguel back from the dead
+			libroActual.setId_libro(libro.getId_libro());			
 			libroUpdated = principalService.save(libroActual);
 		} catch(DataAccessException e) {
 			return GlobalMessage.internalServerError();

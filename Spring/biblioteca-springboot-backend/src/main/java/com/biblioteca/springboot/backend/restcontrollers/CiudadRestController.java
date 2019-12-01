@@ -27,7 +27,7 @@ import com.biblioteca.springboot.backend.models.services.ICiudadService;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 // @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
-@RequestMapping("/biblio/Ciudads")
+@RequestMapping("/biblio/Ciudades")
 public class CiudadRestController {
 	
 	@Autowired

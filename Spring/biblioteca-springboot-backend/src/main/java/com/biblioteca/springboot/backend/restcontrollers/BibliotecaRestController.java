@@ -21,27 +21,27 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.biblioteca.springboot.backend.GlobalMessage;
-import com.biblioteca.springboot.backend.models.entity.Pais;
-import com.biblioteca.springboot.backend.models.services.IPaisService;
+import com.biblioteca.springboot.backend.models.entity.Biblioteca;
+import com.biblioteca.springboot.backend.models.services.IBibliotecaService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 // @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
-@RequestMapping("/biblio/Pais")
-public class PaisRestController {
+@RequestMapping("/biblio/Bibliotecas")
+public class BibliotecaRestController {
 	
 	@Autowired
-	private IPaisService principalService;
+	private IBibliotecaService principalService;
 	
 	
 	@GetMapping({"","/"})
-	public List<Pais> index() {
+	public List<Biblioteca> index() {
 		return principalService.findAll();
 	}
 	
 	@GetMapping({"/{id}","/{id}/"})
 	public ResponseEntity<?> show(@PathVariable Long id) {
-		Pais objectSearch = null;
+		Biblioteca objectSearch = null;
 		Map<String, Object> response = new HashMap<>();
 		try { 
 			objectSearch = principalService.findById(id);
@@ -53,12 +53,12 @@ public class PaisRestController {
 		if ( objectSearch == null ) {
 			return GlobalMessage.notFound();
 		}
-		return new ResponseEntity<Pais>(objectSearch, HttpStatus.OK);
+		return new ResponseEntity<Biblioteca>(objectSearch, HttpStatus.OK);
 	}
 	
 	@PostMapping({"/","" })
-	public ResponseEntity<?> create(@RequestBody Pais objectRefered) {
-		Pais objectCreated = null;
+	public ResponseEntity<?> create(@RequestBody Biblioteca objectRefered) {
+		Biblioteca objectCreated = null;
 		Map<String, Object> response = new HashMap<>();
 		try {
 			objectCreated = principalService.save(objectRefered);
@@ -72,19 +72,19 @@ public class PaisRestController {
 	
 	
 	@PutMapping({"/{id}","/{id}/"})
-	public ResponseEntity<?> update(@RequestBody Pais pais, @PathVariable Long id) {
-		Pais paisActual = principalService.findById(id);
-		Pais paisUpdated = null;
+	public ResponseEntity<?> update(@RequestBody Biblioteca biblioteca, @PathVariable Long id) {
+		Biblioteca bibliotecaActual = principalService.findById(id);
+		Biblioteca bibliotecaUpdated = null;
 		Map<String, Object> response = new HashMap<>();
-		if ( paisActual == null ) {
+		if ( bibliotecaActual == null ) {
 			return GlobalMessage.notFound();
 		}
 		try {		
-			paisUpdated = principalService.save(paisActual);
+			bibliotecaUpdated = principalService.save(bibliotecaActual);
 		} catch(DataAccessException e) {
 			return GlobalMessage.internalServerError();
 		}
-		response.put("data", paisUpdated);
+		response.put("data", bibliotecaUpdated);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 		
 	}
