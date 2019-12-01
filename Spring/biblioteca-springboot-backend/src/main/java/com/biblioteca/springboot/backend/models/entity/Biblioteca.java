@@ -24,7 +24,7 @@ public class Biblioteca implements Serializable {
 
 	private String nombre;
 
-	private String Dirección;
+	private String Direccion;
 
 	@Column(nullable=false)
 	private String idCiudad;
@@ -58,12 +58,12 @@ public class Biblioteca implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public String getDirección() {
-		return Dirección;
+	public String getDireccion() {
+		return Direccion;
 	}
 
-	public void setDirección(String dirección) {
-		Dirección = dirección;
+	public void setDireccion(String dirección) {
+		Direccion = dirección;
 	}
 
 	public String getIdCiudad() {

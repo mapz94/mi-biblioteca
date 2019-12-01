@@ -80,7 +80,8 @@ public class ProyectoRestController {
 			return GlobalMessage.notFound();
 		}
 		try {
-			//TODO: Obtener los datos de MaterialBibliografico		
+			proyectoActual.setAutor(proyecto.getAutor());
+			proyectoActual.setMaterialesBibliograficos(proyecto.getMaterialesBibliograficos());
 			proyectoUpdated = principalService.save(proyectoActual);
 		} catch(DataAccessException e) {
 			return GlobalMessage.internalServerError();

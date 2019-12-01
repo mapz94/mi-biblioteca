@@ -80,6 +80,10 @@ public class PersonaRestController {
 			return GlobalMessage.notFound();
 		}
 		try {		
+			personaActual.setNombre(persona.getNombre());
+			personaActual.setApellidoPaterno(persona.getApellidoPaterno());
+			personaActual.setApellidoMaterno(persona.getApellidoMaterno());
+			personaActual.setRut(persona.getRut());
 			personaUpdated = principalService.save(personaActual);
 		} catch(DataAccessException e) {
 			return GlobalMessage.internalServerError();

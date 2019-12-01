@@ -81,7 +81,10 @@ public class LibroRestController {
 			return GlobalMessage.notFound();
 		}
 		try {
-			libroActual.setId_libro(libro.getId_libro());			
+			libroActual.setIsbn(libro.getIsbn());			
+			libroActual.setEditorial(libro.getEditorial());	
+			libroActual.setAutor(libro.getAutor());	
+			libroActual.setMaterialesBibliograficos(libro.getMaterialesBibliograficos());	
 			libroUpdated = principalService.save(libroActual);
 		} catch(DataAccessException e) {
 			return GlobalMessage.internalServerError();

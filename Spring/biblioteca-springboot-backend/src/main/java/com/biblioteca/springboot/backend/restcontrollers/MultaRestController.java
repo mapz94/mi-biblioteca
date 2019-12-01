@@ -80,6 +80,10 @@ public class MultaRestController {
 			return GlobalMessage.notFound();
 		}
 		try {		
+			multaActual.setPrestamo(multa.getPrestamo());
+			multaActual.setMonto(multa.getMonto());
+			multaActual.setEstadoMulta(multa.getEstadoMulta());
+			multaActual.setFechaCancelacion(multa.getFechaCancelacion());
 			multaUpdated = principalService.save(multaActual);
 		} catch(DataAccessException e) {
 			return GlobalMessage.internalServerError();

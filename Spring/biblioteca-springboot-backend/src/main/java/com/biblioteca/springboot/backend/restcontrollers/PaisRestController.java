@@ -80,6 +80,7 @@ public class PaisRestController {
 			return GlobalMessage.notFound();
 		}
 		try {		
+			paisActual.setNombre(pais.getNombre());
 			paisUpdated = principalService.save(paisActual);
 		} catch(DataAccessException e) {
 			return GlobalMessage.internalServerError();

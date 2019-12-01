@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.biblioteca.springboot.backend.GlobalMessage;
 import com.biblioteca.springboot.backend.models.entity.Socio;
 import com.biblioteca.springboot.backend.models.services.IUploadFileService;
 import com.biblioteca.springboot.backend.models.services.ISocioService;
@@ -31,7 +32,7 @@ import com.biblioteca.springboot.backend.models.services.ISocioService;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 // @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
-@RequestMapping("/biblio")
+@RequestMapping("/biblio/Socios")
 public class SocioRestController {
 	
 	@Autowired
@@ -40,12 +41,12 @@ public class SocioRestController {
 	@Autowired
 	private IUploadFileService uploadService;
 	
-	@GetMapping("/socios")
+	@GetMapping({"","/"})
 	public List<Socio> index() {
 		return socioService.findAll();
 	}
 	
-	@GetMapping("/socios/{id}")
+	@GetMapping({"/{id}","/{id}/"})
 	public ResponseEntity<?> show(@PathVariable Long id) {
 		Socio socioSearch = null;
 		Map<String, Object> response = new HashMap<>();
@@ -57,36 +58,32 @@ public class SocioRestController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if ( socioSearch == null ) {
-			response.put("mensaje", "El usuario ID '".concat(id.toString()).concat("' no existe en la base de datos."));
-			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+			return GlobalMessage.notFound();
 		}
 		return new ResponseEntity<Socio>(socioSearch, HttpStatus.OK);
 	}
 	
-	@PostMapping("/socios")
+	@PostMapping({"/","" })
 	public ResponseEntity<?> create(@RequestBody Socio socio) {
 		Socio socioCreated = null;
 		Map<String, Object> response = new HashMap<>();
 		try {
 			socioCreated = socioService.save(socio);
 		} catch(DataAccessException e) {
-			response.put("mensaje", "Error al realizar el insert en la base de datos.");
-			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
-			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+			return GlobalMessage.internalServerError();
 		}
 		response.put("mensaje", "El cliente ha sido creado con éxito!.");
 		response.put("socio", socioCreated);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	
-	@PutMapping("/socios/{id}")
+	@PutMapping({"/{id}","/{id}/"})
 	public ResponseEntity<?> update(@RequestBody Socio socio, @PathVariable Long id) {
 		Socio socioActual = socioService.findById(id);
 		Socio socioUpdated = null;
 		Map<String, Object> response = new HashMap<>();
 		if ( socioActual == null ) {
-			response.put("mensaje", "El socio ID '".concat(id.toString()).concat("' no existe en la base de datos."));
-			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+			return GlobalMessage.notFound();
 		}
 		try {
 			socioActual.setPassword(socio.getPassword());			
@@ -95,31 +92,25 @@ public class SocioRestController {
 			socioActual.setPersona(socio.getPersona());
 			socioUpdated = socioService.save(socioActual);
 		} catch(DataAccessException e) {
-			response.put("mensaje", "Error al actualizar el usuario en la base de datos.");
-			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
-			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+			return GlobalMessage.internalServerError();
 		}
-		response.put("mensaje", "El usuario ha sido actualizado con éxito!.");
-		response.put("usuario", socioUpdated);
+		response.put("data", socioUpdated);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 		
 	}
 	
-	@DeleteMapping("/socios/{id}")
+	@DeleteMapping({"/{id}","/{id}/"})
 	public ResponseEntity<?> delete(@PathVariable Long id) {
 		Map<String, Object> response = new HashMap<>();
 		try {
 			socioService.delete(id);
 		} catch(DataAccessException e) {
-			response.put("mensaje", "Error al eliminar el cliente en la base de datos.");
-			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
-			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+			return GlobalMessage.notFound();
 		} 
-		response.put("mensaje", "El cliente ha sido eliminado con éxito!.");
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 	}
 	
-	@PostMapping("/socios/upload")
+	@PostMapping("/upload")
 	public ResponseEntity<?> upload(@RequestParam("archivo") MultipartFile archivo, @RequestParam("id") Long id ) {
 		Map<String, Object> response = new HashMap<>();
 		
@@ -131,9 +122,7 @@ public class SocioRestController {
 			try {
 				nombreArchivo = uploadService.copiar(archivo);
 			} catch (IOException e) {
-				response.put("mensaje", "Error al eliminar al subir la imagen del cliente");
-				response.put("error", e.getMessage().concat(": ").concat(e.getCause().getMessage()));
-				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+				return GlobalMessage.internalServerError();
 			}
 			
 			String avatarAnterior = socio.getImgAvatar();
@@ -141,9 +130,7 @@ public class SocioRestController {
 			socio.setImgAvatar(nombreArchivo);
 			socioService.save(socio);
 			
-			response.put("socio", socio);
-			response.put("mensaje", "Has subido correctamente la imagen: " + nombreArchivo);
-			
+			response.put("data", socio);			
 		}
 		
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);

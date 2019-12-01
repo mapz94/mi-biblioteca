@@ -45,6 +45,7 @@ public class BibliotecaRestController {
 		Map<String, Object> response = new HashMap<>();
 		try { 
 			objectSearch = principalService.findById(id);
+			
 		} catch(DataAccessException e) {
 			response.put("mensaje", "Error al realizar la busqueda en la base de datos.");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
@@ -80,6 +81,11 @@ public class BibliotecaRestController {
 			return GlobalMessage.notFound();
 		}
 		try {		
+			bibliotecaActual.setIdMaterial(biblioteca.getIdMaterial());
+			bibliotecaActual.setNombre(biblioteca.getNombre());
+			bibliotecaActual.setDireccion(biblioteca.getDireccion());
+			bibliotecaActual.setIdCiudad(biblioteca.getIdCiudad());
+			bibliotecaActual.setIdPais(biblioteca.getIdPais());
 			bibliotecaUpdated = principalService.save(bibliotecaActual);
 		} catch(DataAccessException e) {
 			return GlobalMessage.internalServerError();

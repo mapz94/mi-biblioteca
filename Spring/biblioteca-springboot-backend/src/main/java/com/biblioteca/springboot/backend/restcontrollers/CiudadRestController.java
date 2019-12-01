@@ -80,6 +80,8 @@ public class CiudadRestController {
 			return GlobalMessage.notFound();
 		}
 		try {		
+			ciudadActual.setNombre(ciudad.getNombre());
+			ciudadActual.setIdPais(ciudad.getIdPais());
 			ciudadUpdated = principalService.save(ciudadActual);
 		} catch(DataAccessException e) {
 			return GlobalMessage.internalServerError();
