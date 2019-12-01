@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.client.RestTemplate;
 
 import com.biblioteca.springboot.backend.GlobalMessage;
 import com.biblioteca.springboot.backend.models.entity.Libro;
@@ -63,6 +63,7 @@ public class LibroRestController {
 		try {
 			objectCreated = principalService.save(objectRefered);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		} catch(DataAccessException e) {
 			return GlobalMessage.internalServerError();
@@ -73,6 +74,12 @@ public class LibroRestController {
 		}
 		//response.put("mensaje", "El material bibliografico ha sido creado con éxito!.");
 >>>>>>> Miguel back from the dead
+=======
+
+		} catch(DataAccessException e) {
+			return GlobalMessage.internalServerError();
+		}
+>>>>>>> commit
 		response.put("data", objectCreated );
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
