@@ -21,27 +21,27 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.biblioteca.springboot.backend.GlobalMessage;
-import com.biblioteca.springboot.backend.models.entity.Libro;
-import com.biblioteca.springboot.backend.models.services.ILibroService;
+import com.biblioteca.springboot.backend.models.entity.Pais;
+import com.biblioteca.springboot.backend.models.services.IPaisService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 // @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
-@RequestMapping("/biblio/Libros")
-public class LibroRestController {
+@RequestMapping("/biblio/Paiss")
+public class PaisRestController {
 	
 	@Autowired
-	private ILibroService principalService;
+	private IPaisService principalService;
 	
 	
 	@GetMapping({"","/"})
-	public List<Libro> index() {
+	public List<Pais> index() {
 		return principalService.findAll();
 	}
 	
 	@GetMapping({"/{id}","/{id}/"})
 	public ResponseEntity<?> show(@PathVariable Long id) {
-		Libro objectSearch = null;
+		Pais objectSearch = null;
 		Map<String, Object> response = new HashMap<>();
 		try { 
 			objectSearch = principalService.findById(id);
@@ -53,12 +53,12 @@ public class LibroRestController {
 		if ( objectSearch == null ) {
 			return GlobalMessage.notFound();
 		}
-		return new ResponseEntity<Libro>(objectSearch, HttpStatus.OK);
+		return new ResponseEntity<Pais>(objectSearch, HttpStatus.OK);
 	}
 	
 	@PostMapping({"/","" })
-	public ResponseEntity<?> create(@RequestBody Libro objectRefered) {
-		Libro objectCreated = null;
+	public ResponseEntity<?> create(@RequestBody Pais objectRefered) {
+		Pais objectCreated = null;
 		Map<String, Object> response = new HashMap<>();
 		try {
 			objectCreated = principalService.save(objectRefered);
@@ -72,20 +72,19 @@ public class LibroRestController {
 	
 	
 	@PutMapping({"/{id}","/{id}/"})
-	public ResponseEntity<?> update(@RequestBody Libro libro, @PathVariable Long id) {
-		Libro libroActual = principalService.findById(id);
-		Libro libroUpdated = null;
+	public ResponseEntity<?> update(@RequestBody Pais pais, @PathVariable Long id) {
+		Pais paisActual = principalService.findById(id);
+		Pais paisUpdated = null;
 		Map<String, Object> response = new HashMap<>();
-		if ( libroActual == null ) {
+		if ( paisActual == null ) {
 			return GlobalMessage.notFound();
 		}
-		try {
-			//TODO: Obtener los datos de MaterialBibliografico		
-			libroUpdated = principalService.save(libroActual);
+		try {		
+			paisUpdated = principalService.save(paisActual);
 		} catch(DataAccessException e) {
 			return GlobalMessage.internalServerError();
 		}
-		response.put("data", libroUpdated);
+		response.put("data", paisUpdated);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 		
 	}
